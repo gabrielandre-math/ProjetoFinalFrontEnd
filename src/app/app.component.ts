@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms"
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 
 
 import { MatFormFieldModule } from "@angular/material/form-field"
@@ -30,7 +30,7 @@ import { MatCardModule } from "@angular/material/card"
     MatButtonModule, MatSelectModule, MatTableModule,
     MatRadioModule, MatInputModule, MatIconModule,
     MatListModule, MatCardModule, FormsModule,
-    HttpClientModule, ReactiveFormsModule
+    ReactiveFormsModule
   ],
   templateUrl: 'app.component.html',
   styles: [],
