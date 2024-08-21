@@ -22,6 +22,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MirrorShapeComponent } from './components/mirror-shape/mirror-shape.component';
+import { FeatureCardsComponent } from './feature-cards/feature-cards.component';
 
 @Component({
   selector: 'app-root',
@@ -36,7 +37,8 @@ import { MirrorShapeComponent } from './components/mirror-shape/mirror-shape.com
     MatListModule, MatCardModule, FormsModule,
     ReactiveFormsModule, 
     //Meus componentes
-    NavComponent, HeaderComponent, FooterComponent, MirrorShapeComponent
+    NavComponent, HeaderComponent, FooterComponent, MirrorShapeComponent,
+    FeatureCardsComponent
   ],
   templateUrl: 'app.component.html',
   styles: [],

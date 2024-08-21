@@ -3,10 +3,11 @@ import { HeaderComponent } from '../../header/header.component';
 import { Router } from '@angular/router'
 import { FooterComponent } from '../footer/footer.component';
 import { MirrorShapeComponent } from '../mirror-shape/mirror-shape.component';
+import { FeatureCardsComponent } from '../../feature-cards/feature-cards.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, MirrorShapeComponent],
+  imports: [HeaderComponent, FooterComponent, MirrorShapeComponent, FeatureCardsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

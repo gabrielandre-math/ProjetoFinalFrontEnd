@@ -1,0 +1,42 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(33.333% - 20px); /* Três cards por linha */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card-content img {
+    margin-bottom: 20px;
+    width: 50px; /* Define o tamanho do ícone */
+}
+
+.card-content h5 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+@media (max-width: 992px) {
+    .card-item {
+        width: calc(50% - 20px); /* Dois cards por linha em telas médias */
+    }
+}
+
+@media (max-width: 768px) {
+    .card-item {
+        width: calc(100% - 20px); /* Um card por linha em telas pequenas */
+    }
+}
