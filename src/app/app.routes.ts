@@ -3,6 +3,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MirrorShapeComponent } from './components/mirror-shape/mirror-shape.component';
 
 export const routes: Routes = [
     {
@@ -10,7 +11,8 @@ export const routes: Routes = [
         component: HomeComponent, children: [
             { path: 'home', component: HomeComponent },
             { path: 'header', component: HeaderComponent },
-            { path: 'footer', component: FooterComponent}
+            { path: 'footer', component: FooterComponent},
+            { path: 'mirror-shape', component: MirrorShapeComponent }
         ]
 
     }

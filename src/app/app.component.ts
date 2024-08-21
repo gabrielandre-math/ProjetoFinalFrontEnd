@@ -21,6 +21,7 @@ import { MatCardModule } from "@angular/material/card";
 import { NavComponent } from './components/nav/nav.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MirrorShapeComponent } from './components/mirror-shape/mirror-shape.component';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MatListModule, MatCardModule, FormsModule,
     ReactiveFormsModule, 
     //Meus componentes
-    NavComponent, HeaderComponent, FooterComponent
+    NavComponent, HeaderComponent, FooterComponent, MirrorShapeComponent
   ],
   templateUrl: 'app.component.html',
   styles: [],
