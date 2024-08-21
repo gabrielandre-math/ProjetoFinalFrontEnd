@@ -1,0 +1,140 @@
+
+  
+/* Container principal para o efeito de vidro */
+.glass-container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 80px;
+    margin-bottom: 120px;
+}
+  
+/* Blobs Container */
+.blobs-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+  
+/* Estilo das Blobs */
+.blob {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255,127,102,1) 0%, rgba(255,107,102,0.5) 100%);
+    border-radius: 50%;
+    mix-blend-mode: color-dodge;
+    transition: all 0.5s ease;
+}
+  
+.blob1 {
+    background: radial-gradient(circle, rgba(255,174,102,1) 0%, rgba(255,107,102,0.5) 100%);
+}
+  
+.blob2 {
+    background: radial-gradient(circle, rgba(186,85,211,1) 0%, rgba(147,112,219,0.5) 100%);
+}
+  
+.blob3 {
+    background: radial-gradient(circle, rgba(255,102,154,1) 0%, rgba(255,87,130,0.5) 100%);
+}
+  
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .blob {
+        width: 150px;
+        height: 150px;
+    }
+}
+  
+@media (max-width: 480px) {
+    .blob {
+        width: 100px;
+        height: 100px;
+    }
+}
+  
+/* Glass Effect */
+.glass-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    padding: 40px;
+    text-align: center;
+    z-index: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 200px;
+}
+  
+.main-text {
+    font-family: 'Nunito', sans-serif;
+    color: #2F2F2F;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    min-height: 3rem;
+    min-width: 100%; /* Adiciona uma largura mínima para evitar variações no layout */
+    font-weight: 400; /* Aplica o estilo regular */
+}
+  
+.glass-button {
+    background-color: #FF6E7F;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    top: 50px; /* Fixa a posição vertical do botão */
+}
+  
+.glass-button:hover {
+    background-color: #ff5676;
+}
+  
+.typewriter-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #FF6E7F;
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+  
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+  
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #FF6E7F; }
+}
+
+/* Text Container for Limiting Text Area */
+.text-container {
+    max-width: 400px;
+    width: 100%;
+    max-height: 400px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 20px; /* Espaçamento abaixo do texto para o botão */
+}
