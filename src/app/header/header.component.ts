@@ -16,13 +16,37 @@ export class HeaderComponent implements AfterViewInit {
     const menuButton = document.getElementById('menu-button');
     const animatedIcon = document.querySelector('.animated-icon1');
     const responsiveMenu = document.getElementById('responsive-menu');
+    const brandName = document.querySelector('.brand-name') as HTMLElement;
 
-    if (menuButton && animatedIcon && responsiveMenu) {
+    if (menuButton && animatedIcon && responsiveMenu && brandName) {
+      // Separar cada letra do brandName em spans para animá-las individualmente
+      const brandText = brandName.textContent;
+      brandName.innerHTML = ''; // Limpa o texto original
+
+      if (brandText) {
+        brandText.split('').forEach(letter => {
+          const span = document.createElement('span');
+          span.textContent = letter;
+          brandName.appendChild(span);
+        });
+      }
+
+      const spans = brandName.querySelectorAll('span');
+
       menuButton.addEventListener('click', () => {
         this.isMenuOpen = !this.isMenuOpen;
         animatedIcon.classList.toggle('open'); // Alterna a animação do ícone
 
         if (this.isMenuOpen) {
+          // Animação das letras da direita para a esquerda
+          anime({
+            targets: spans,
+            color: ['#000000', '#FF6E7F'],
+            delay: anime.stagger(100, { direction: 'reverse' }), // Anima da direita para a esquerda
+            duration: 500,
+            easing: 'easeInOutQuad',
+          });
+
           // Animação de entrada do menu responsivo
           responsiveMenu.style.display = 'block';
           anime({
@@ -33,6 +57,15 @@ export class HeaderComponent implements AfterViewInit {
             easing: 'easeInOutQuad'
           });
         } else {
+          // Animação das letras da esquerda para a direita
+          anime({
+            targets: spans,
+            color: ['#FF6E7F', '#000000'],
+            delay: anime.stagger(100), // Anima da esquerda para a direita
+            duration: 500,
+            easing: 'easeInOutQuad',
+          });
+
           // Animação de saída do menu responsivo
           anime({
             targets: responsiveMenu,

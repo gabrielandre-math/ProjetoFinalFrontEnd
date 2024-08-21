@@ -19,7 +19,9 @@
   .responsive-menu {
     overflow: hidden;
   }
-  
+  .bg-custom {
+    background-color: #ffffff;
+  }
   .custom-button {
     border-radius: 50px; /* Bordas arredondadas para dar aparência de pílula */
     padding: 8px 20px; /* Espaçamento interno reduzido para tornar os botões menores */
