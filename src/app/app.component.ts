@@ -23,7 +23,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MirrorShapeComponent } from './components/mirror-shape/mirror-shape.component';
 import { FeatureCardsComponent } from './components/feature-cards/feature-cards.component';
-
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -45,4 +45,9 @@ import { FeatureCardsComponent } from './components/feature-cards/feature-cards.
 })
 export class AppComponent {
   title = 'smartorder';
+  
+  constructor(private router : Router) {}
+  ngOnInit(): void {
+    this.router.navigate(['home'])
+  }
 }

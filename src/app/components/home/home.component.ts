@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { Router } from '@angular/router'
 import { MirrorShapeComponent } from '../mirror-shape/mirror-shape.component';
 import { FeatureCardsComponent } from '../feature-cards/feature-cards.component';
 
@@ -12,5 +13,5 @@ import { FeatureCardsComponent } from '../feature-cards/feature-cards.component'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor() {}
+  
 }
