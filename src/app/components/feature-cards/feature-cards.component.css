@@ -1,42 +1,115 @@
+/* feature-cards.component.css */
+
+/* Título */
+h2 {
+    font-size: 1.7rem;
+}
+
+/* Container principal */
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 50px 20px; /* Espaçamento superior e inferior */
 }
 
+/* Grid de cards */
 .card-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
+    align-items: flex-start; /* Certifica que os itens fiquem no topo e não sejam afetados pela altura dos outros */
 }
 
+/* Cada card individual */
 .card-item {
     background: #fff;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 30px 20px;
     width: calc(33.333% - 20px); /* Três cards por linha */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra mais evidente */
     text-align: center;
+    opacity: 0; /* Invisível inicialmente */
+    transform: translateY(50px); /* Levemente deslocado para baixo */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, transform 0.3s ease; /* Transição suave */
+    position: relative;
+    z-index: 0; /* Garante que o z-index inicial seja neutro */
+    overflow: hidden; /* Esconde qualquer parte do card que possa sair de seus limites */
 }
 
+/* Efeito de hover */
+.card-item:hover {
+    transform: translateY(0) scale(1.05); /* Aumenta levemente o tamanho no hover */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25); /* Sombra mais intensa no hover */
+    z-index: 10; /* Traz o card para frente */
+}
+
+/* Parágrafo adicional escondido */
+.card-content p {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* Mostrar parágrafo adicional no hover */
+.card-item:hover .card-content p {
+    max-height: 100px; /* Ajuste conforme necessário */
+    opacity: 1;
+}
+
+/* Ajustes para telas médias */
+@media (max-width: 992px) {
+    .card-item {
+        width: calc(50% - 20px); /* Dois cards por linha */
+    }
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 768px) {
+    .card-item {
+        width: 100%; /* Um card por linha */
+    }
+}
+
+/* Estilização do conteúdo do card */
 .card-content img {
     margin-bottom: 20px;
-    width: 50px; /* Define o tamanho do ícone */
+    width: 60px;
+    height: 60px;
 }
 
 .card-content h5 {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 18px; /* Reduzido para 18px */
+    font-weight: 400; /* Fonte mais fina */
+    color: #333;
+    margin-bottom: 10px;
 }
 
-@media (max-width: 992px) {
-    .card-item {
-        width: calc(50% - 20px); /* Dois cards por linha em telas médias */
-    }
+.card-content p {
+    font-size: 14px; /* Reduzido para 14px */
+    color: #666;
+    line-height: 1.5;
+    margin-top: 10px;
 }
 
-@media (max-width: 768px) {
-    .card-item {
-        width: calc(100% - 20px); /* Um card por linha em telas pequenas */
-    }
+/* Título principal */
+.section-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.7rem; /* Ajustado para 1.7rem */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+/* Estilização do conteúdo do card */
+.card-content img {
+    margin-bottom: 20px;
+    width: 60px;
+    height: 60px;
+    transition: transform 0.6s ease; /* Transição suave para a imagem */
+}
+
+.card-item:hover .card-content img {
+    transform: scale(1.2) rotate(-10deg); /* Aumenta e rotaciona levemente para a esquerda no hover */
 }
