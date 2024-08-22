@@ -22,7 +22,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MirrorShapeComponent } from './components/mirror-shape/mirror-shape.component';
-import { FeatureCardsComponent } from './feature-cards/feature-cards.component';
+import { FeatureCardsComponent } from './components/feature-cards/feature-cards.component';
 
 @Component({
   selector: 'app-root',
