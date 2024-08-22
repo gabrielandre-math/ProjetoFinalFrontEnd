@@ -6,6 +6,7 @@ input, textarea, button,
 label, div, td, th {
   font-family: 'Nunito', Arial, sans-serif;
 }
+
 .login-container {
     display: flex;
     justify-content: center;
@@ -19,7 +20,7 @@ label, div, td, th {
     background: #ffffff;
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2); /* Aumentando a sombra */
     max-width: 400px;
     width: 100%;
     text-align: center;
