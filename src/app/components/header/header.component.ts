@@ -13,15 +13,23 @@ export class HeaderComponent implements AfterViewInit {
   isMenuOpen = false;
 
   ngAfterViewInit() {
+    const header = document.querySelector('.header') as HTMLElement;
     const menuButton = document.getElementById('menu-button');
     const animatedIcon = document.querySelector('.animated-icon1');
     const responsiveMenu = document.getElementById('responsive-menu');
     const brandName = document.querySelector('.brand-name') as HTMLElement;
 
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
     if (menuButton && animatedIcon && responsiveMenu && brandName) {
-      // Separar cada letra do brandName em spans para animá-las individualmente
       const brandText = brandName.textContent;
-      brandName.innerHTML = ''; // Limpa o texto original
+      brandName.innerHTML = '';
 
       if (brandText) {
         brandText.split('').forEach(letter => {
@@ -35,19 +43,17 @@ export class HeaderComponent implements AfterViewInit {
 
       menuButton.addEventListener('click', () => {
         this.isMenuOpen = !this.isMenuOpen;
-        animatedIcon.classList.toggle('open'); // Alterna a animação do ícone
+        animatedIcon.classList.toggle('open');
 
         if (this.isMenuOpen) {
-          // Animação das letras da direita para a esquerda
           anime({
             targets: spans,
             color: ['#000000', '#FF6E7F'],
-            delay: anime.stagger(100, { direction: 'reverse' }), // Anima da direita para a esquerda
+            delay: anime.stagger(100, { direction: 'reverse' }),
             duration: 500,
             easing: 'easeInOutQuad',
           });
 
-          // Animação de entrada do menu responsivo
           responsiveMenu.style.display = 'block';
           anime({
             targets: responsiveMenu,
@@ -57,16 +63,14 @@ export class HeaderComponent implements AfterViewInit {
             easing: 'easeInOutQuad'
           });
         } else {
-          // Animação das letras da esquerda para a direita
           anime({
             targets: spans,
             color: ['#FF6E7F', '#000000'],
-            delay: anime.stagger(100), // Anima da esquerda para a direita
+            delay: anime.stagger(100),
             duration: 500,
             easing: 'easeInOutQuad',
           });
 
-          // Animação de saída do menu responsivo
           anime({
             targets: responsiveMenu,
             height: ['150px', '0px'],
