@@ -96,7 +96,14 @@
   transition: 0.5s ease-in-out;
   cursor: pointer;
 }
-
+*,
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li, blockquote,
+input, textarea, button,
+label, div, td, th {
+  font-family: 'Nunito', Arial, sans-serif;
+}
 .animated-icon1 span {
   display: block;
   position: absolute;

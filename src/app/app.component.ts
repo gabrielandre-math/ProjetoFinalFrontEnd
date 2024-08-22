@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -17,25 +16,25 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatCardModule } from "@angular/material/card";
+
 // Meus components
 import { NavComponent } from './components/nav/nav.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MirrorShapeComponent } from './components/mirror-shape/mirror-shape.component';
 import { FeatureCardsComponent } from './components/feature-cards/feature-cards.component';
-import { Router } from '@angular/router'
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    //Componentes padrão do Angular Material 
     RouterOutlet,
     MatFormFieldModule, MatPaginatorModule, MatSnackBarModule,
     MatCheckboxModule, MatToolbarModule, MatSidenavModule,
     MatButtonModule, MatSelectModule, MatTableModule,
     MatRadioModule, MatInputModule, MatIconModule,
     MatListModule, MatCardModule, FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     //Meus componentes
     NavComponent, HeaderComponent, FooterComponent, MirrorShapeComponent,
     FeatureCardsComponent
@@ -45,9 +44,4 @@ import { Router } from '@angular/router'
 })
 export class AppComponent {
   title = 'smartorder';
-  
-  constructor(private router : Router) {}
-  ngOnInit(): void {
-    this.router.navigate(['home'])
-  }
 }

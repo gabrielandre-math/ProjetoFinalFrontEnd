@@ -36,7 +36,16 @@
     color: white;
     font-family: 'Nunito', sans-serif; /* Aplicar a fonte Nunito */
   }
+  *,
+  body,
+  h1, h2, h3, h4, h5, h6,
+  p, a, span, li, blockquote,
+  input, textarea, button,
+  label, div, td, th {
+    font-family: 'Nunito', Arial, sans-serif;
+  }
   
+
   /* Responsivo para telas menores */
   @media (max-width: 576px) {
     .brand-name {
