@@ -8,11 +8,27 @@
       <form>
         <div class="form-group">
           <label for="email">E-mail</label>
-          <input type="email" id="email" class="form-control" placeholder="Digite o seu e-mail">
+          <input 
+            [formControl]="email"
+            required
+            [(ngModel)]="cred.email" 
+            name="email" 
+            type="email" 
+            id="email" 
+            class="form-control" 
+            placeholder="Digite o seu e-mail">
         </div>
         <div class="form-group">
           <label for="password">Senha</label>
-          <input type="password" id="password" class="form-control" placeholder="**********">
+          <input 
+            [formControl]="senha"
+            required
+            [(ngModel)]="cred.senha" 
+            name="senha" 
+            type="password" 
+            id="password" 
+            class="form-control" 
+            placeholder="**********">
         </div>
         <div class="form-options">
           <div class="form-check">
@@ -21,11 +37,11 @@
           </div>
           <a href="#" class="forgot-password">Esqueci a senha</a>
         </div>
-        <button type="submit" class="btn btn-login">Entrar</button>
+        <button type="submit" class="btn btn-login" [disabled]="!email.valid || !senha.valid">Entrar</button>
       </form>
       <p class="signup-prompt">
         Não tem uma conta? <a href="#" class="signup-link">Cadastre-se é grátis!</a>
       </p>
     </div>
-  </div>
-  <app-footer></app-footer>
+</div>
+<app-footer></app-footer>
