@@ -16,10 +16,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideNoopAnimations(),
-    provideHttpClient(), // Adicione o HttpClient aqui
+    provideHttpClient(), // Utilizando provideHttpClient no lugar de HttpClient (legado)
     importProvidersFrom(
       ToastrModule.forRoot({
-        timeOut: 4000,
+        timeOut: 3000,
         closeButton: true,
         progressBar: true
       })

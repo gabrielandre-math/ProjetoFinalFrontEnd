@@ -35,9 +35,14 @@ export class LoginComponent {
         console.log("Token recebido:", authToken);
         this.service.successfulLogin(authToken.substring(7));
         this.toast.success("Login bem-sucedido");
-        // Redirecionar o usuário
-        // this.router.navigate(['/home']);
-        this.router.navigate(['']);
+  
+        // Aguardar 3 segundos para permitir que o Toastr seja exibido
+        setTimeout(() => {
+          // Redirecionar o usuário e recarregar a página
+          this.router.navigate(['']).then(() => {
+            window.location.reload(); // Executa o F5 após o redirecionamento
+          });
+        }, 3000); // 3000 milissegundos = 3 segundos
       } else {
         this.toast.error("Erro ao autenticar. Tente novamente.");
       }
@@ -45,6 +50,7 @@ export class LoginComponent {
       this.toast.error("Usuário e/ou senha inválidos");
     });
   }
+  
   
 }
 
