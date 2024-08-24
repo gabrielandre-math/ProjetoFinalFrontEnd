@@ -1,21 +1,18 @@
-/* CSS Ajustado */
-
 .header {
-  margin-top: 1.5px;
-  margin-right: 1.5px;
-  margin-left: 1.5px;
+  margin: 10px; /* Margem maior para garantir afastamento das bordas */
+  padding: 10px;
   border-radius: 28px;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: calc(100% - 20px); /* Ajuste de largura para compensar a margem */
   z-index: 1000;
-  padding: 10px;
+  box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
   transition: background-color 0.3s ease, box-shadow 0.5s ease;
 }
 
 .scrolled {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Adicionado !important para garantir a aplicação */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Mantém a sombra ao rolar */
 }
 
 .bg-custom {
@@ -34,7 +31,6 @@
   outline: none;
 }
 
-/* Estilos dos botões */
 .btn-register {
   background-color: #FF6E7F !important;
   margin-right: 5px;
@@ -55,35 +51,40 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(255, 119, 169, 0.6);
 }
+
 .custom-icon {
-  color: #FF6E7F; /* Cor personalizada para o ícone */
-  font-size: 1.5rem; /* Tamanho do ícone */
-  margin-right: 8px; /* Espaço entre o ícone e o texto 'SmartOrder' */
+  color: #FF6E7F;
+  font-size: 1.5rem;
+  margin-right: 8px;
 }
 
 .brand-name {
   font-weight: bold;
-  font-size: 1.2rem; /* Tamanho do texto */
+  font-size: 1.2rem;
   color: #000000;
-  font-family: 'Nunito', sans-serif; /* Aplicar a fonte Nunito */
+  font-family: 'Nunito', sans-serif;
 }
+
 .custom-button:active {
   transform: translateY(2px);
 }
 
 .distance-button {
-  margin-top: 0px;
   font-family: 'Nunito', sans-serif;
 }
 
 @media (max-width: 992px) {
   .distance-button {
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   #menu-button {
     margin-left: auto;
     margin-right: 15px;
+  }
+
+  .responsive-menu button {
+    margin-top: 15px;
   }
 }
 
@@ -96,6 +97,7 @@
   transition: 0.5s ease-in-out;
   cursor: pointer;
 }
+
 *,
 body,
 h1, h2, h3, h4, h5, h6,
@@ -104,6 +106,7 @@ input, textarea, button,
 label, div, td, th {
   font-family: 'Nunito', Arial, sans-serif;
 }
+
 .animated-icon1 span {
   display: block;
   position: absolute;
