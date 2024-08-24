@@ -1,5 +1,3 @@
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-
 <header class="header sticky-top bg-custom">
   <div class="container-fluid d-flex justify-content-between align-items-center py-2">
     <a class="navbar-brand d-flex align-items-center" href="#">
@@ -8,8 +6,15 @@
     </a>
 
     <div class="d-none d-lg-flex align-items-center">
-      <button mat-raised-button class="custom-button btn-register mr-2">Registrar</button>
-      <button mat-raised-button class="custom-button btn-login">Entrar</button>
+      <!-- Exibe botões com base na autenticação -->
+      <ng-container *ngIf="isAuthenticated; else guest">
+        <button mat-raised-button class="custom-button btn-register btn-space" (click)="goToDashboard()">Painel</button>
+        <button mat-raised-button class="custom-button btn-login btn-space" (click)="logout()">Sair</button>
+      </ng-container>
+      <ng-template #guest>
+        <button mat-raised-button class="custom-button btn-register btn-space">Registrar</button>
+        <button mat-raised-button class="custom-button btn-login">Entrar</button>
+      </ng-template>
     </div>
 
     <button class="d-lg-none btn btn-link" id="menu-button">
@@ -19,7 +24,13 @@
 
   <!-- Menu dropdown que aparece no modo responsivo -->
   <div id="responsive-menu" class="d-lg-none responsive-menu" style="display: none;">
-    <button mat-raised-button class="distance-button custom-button btn-register w-100 mb-2">Registrar</button>
-    <button mat-raised-button class="custom-button btn-login w-100">Entrar</button>
+    <ng-container *ngIf="isAuthenticated; else guestMobile">
+      <button mat-raised-button class="distance-button custom-button btn-painel w-100 mb-2" (click)="goToDashboard()">Painel</button>
+      <button mat-raised-button class="custom-button btn-logout w-100 mb-2" (click)="logout()">Sair</button>
+    </ng-container>
+    <ng-template #guestMobile>
+      <button mat-raised-button class="distance-button custom-button btn-register w-100 mb-2">Registrar</button>
+      <button mat-raised-button class="custom-button btn-login w-100">Entrar</button>
+    </ng-template>
   </div>
 </header>

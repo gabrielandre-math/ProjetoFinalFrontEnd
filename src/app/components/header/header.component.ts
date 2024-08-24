@@ -2,7 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import anime from 'animejs/lib/anime.es.js';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -12,11 +12,14 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements AfterViewInit {
   
-
-
   isMenuOpen = false;
+  isAuthenticated = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngAfterViewInit() {
+    this.isAuthenticated = this.authService.isAuthenticated();
+    
     const header = document.querySelector('.header') as HTMLElement;
     const menuButton = document.getElementById('menu-button');
     const animatedIcon = document.querySelector('.animated-icon1');
@@ -88,5 +91,15 @@ export class HeaderComponent implements AfterViewInit {
         }
       });
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+    window.location.reload(); // Recarga a página para atualizar o estado de autenticação
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 }

@@ -37,19 +37,46 @@
   box-shadow: 0 4px 8px rgba(255, 110, 127, 0.6);
 }
 
-.btn-login {
-  background-color: #FF77A9 !important;
-  box-shadow: 0 4px 8px rgba(255, 119, 169, 0.6);
-}
-
 .btn-register:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(255, 110, 127, 0.6);
 }
 
+.btn-login {
+  background-color: #FF77A9 !important;
+  box-shadow: 0 4px 8px rgba(255, 119, 169, 0.6);
+}
+
 .btn-login:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(255, 119, 169, 0.6);
+}
+
+.btn-painel {
+  background-color: #FF6E7F !important; /* Mesma cor que o botão "Registrar" */
+  box-shadow: 0 4px 8px rgba(255, 110, 127, 0.6);
+  color: white !important; /* Garante que o texto seja visível */
+}
+
+.btn-painel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(255, 110, 127, 0.6);
+}
+
+.btn-logout {
+  background-color: #D1497F !important; /* Rosa mais escuro, mas consistente */
+  box-shadow: 0 4px 8px rgba(209, 73, 127, 0.6);
+  color: white !important; /* Garante que o texto seja visível */
+}
+
+.btn-logout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(209, 73, 127, 0.6);
+}
+
+/* Distância entre os botões */
+.btn-space {
+  margin-right: 10px; /* Ajuste a distância entre os botões */
 }
 
 .custom-icon {
@@ -63,10 +90,6 @@
   font-size: 1.2rem;
   color: #000000;
   font-family: 'Nunito', sans-serif;
-}
-
-.custom-button:active {
-  transform: translateY(2px);
 }
 
 .distance-button {
@@ -96,15 +119,6 @@
   transform: rotate(0deg);
   transition: 0.5s ease-in-out;
   cursor: pointer;
-}
-
-*,
-body,
-h1, h2, h3, h4, h5, h6,
-p, a, span, li, blockquote,
-input, textarea, button,
-label, div, td, th {
-  font-family: 'Nunito', Arial, sans-serif;
 }
 
 .animated-icon1 span {
