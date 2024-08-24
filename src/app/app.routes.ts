@@ -14,6 +14,7 @@ export const routes: Routes = [
     {
         path: '', component: HomeComponent, children:
             [
+                { path: 'home', component: HomeComponent },
                 { path: 'header', component: HeaderComponent },
                 { path: 'mirror-shape', component: MirrorShapeComponent },
                 { path: 'feature-cards', component: FeatureCardsComponent },
