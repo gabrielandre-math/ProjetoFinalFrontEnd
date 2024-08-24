@@ -35,23 +35,30 @@ export class LoginComponent {
         console.log("Token recebido:", authToken);
         this.service.successfulLogin(authToken.substring(7));
         this.toast.success("Login bem-sucedido");
-  
-        // Aguardar 3 segundos para permitir que o Toastr seja exibido
+
+        // Temporizador de 3 segundos antes de redirecionar e recarregar
         setTimeout(() => {
-          // Redirecionar o usuário e recarregar a página
           this.router.navigate(['']).then(() => {
-            window.location.reload(); // Executa o F5 após o redirecionamento
+            window.location.reload();
           });
-        }, 3000); // 3000 milissegundos = 3 segundos
+        }, 3000);
       } else {
         this.toast.error("Erro ao autenticar. Tente novamente.");
+
+        // Temporizador de 3 segundos antes de recarregar a página em caso de erro
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
       }
     }, () => {
       this.toast.error("Usuário e/ou senha inválidos");
+
+      // Temporizador de 3 segundos antes de recarregar a página em caso de erro
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
     });
   }
-  
-  
 }
 
 export interface Credenciais {

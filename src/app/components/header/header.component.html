@@ -9,7 +9,7 @@
       <!-- Exibe botões com base na autenticação -->
       <ng-container *ngIf="isAuthenticated; else guest">
         <button mat-raised-button class="custom-button btn-register btn-space" (click)="goToDashboard()">Painel</button>
-        <button mat-raised-button class="custom-button btn-login btn-space" (click)="logout()">Sair</button>
+        <button (click)="eventoSair($event)" mat-raised-button class="custom-button btn-login btn-space" (click)="logout()">Sair</button>
       </ng-container>
       <ng-template #guest>
         <button mat-raised-button class="custom-button btn-register btn-space">Registrar</button>
@@ -26,7 +26,7 @@
   <div id="responsive-menu" class="d-lg-none responsive-menu" style="display: none;">
     <ng-container *ngIf="isAuthenticated; else guestMobile">
       <button mat-raised-button class="distance-button custom-button btn-painel w-100 mb-2" (click)="goToDashboard()">Painel</button>
-      <button mat-raised-button class="custom-button btn-logout w-100 mb-2" (click)="logout()">Sair</button>
+      <button (click)="eventoSair($event)" mat-raised-button class="custom-button btn-logout w-100 mb-2" (click)="logout()">Sair</button>
     </ng-container>
     <ng-template #guestMobile>
       <button mat-raised-button class="distance-button custom-button btn-register w-100 mb-2">Registrar</button>

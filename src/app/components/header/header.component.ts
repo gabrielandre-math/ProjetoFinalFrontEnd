@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import anime from 'animejs/lib/anime.es.js';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -15,7 +17,7 @@ export class HeaderComponent implements AfterViewInit {
   isMenuOpen = false;
   isAuthenticated = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private toast: ToastrService) {}
 
   ngAfterViewInit() {
     this.isAuthenticated = this.authService.isAuthenticated();
@@ -96,9 +98,10 @@ export class HeaderComponent implements AfterViewInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
-    window.location.reload(); // Recarga a página para atualizar o estado de autenticação
   }
-
+  eventoSair(event: Event) {
+    this.toast.info('Você saiu do sistema!', 'Logout');
+  }
   goToDashboard() {
     this.router.navigate(['/dashboard']);
   }
