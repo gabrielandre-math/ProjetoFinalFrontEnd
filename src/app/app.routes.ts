@@ -4,13 +4,21 @@ import { MirrorShapeComponent } from './components/mirror-shape/mirror-shape.com
 import { FeatureCardsComponent } from './components/feature-cards/feature-cards.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
+import { HeaderComponent } from './components/header/header.component';
+import { Component } from '@angular/core';
 
 export const routes: Routes = [
-    { path: 'login', component: LoginComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redireciona a rota raiz para 'home'
-    { path: 'home', component: HomeComponent },
-    { path: 'mirror-shape', component: MirrorShapeComponent },
-    { path: 'feature-cards', component: FeatureCardsComponent },
-    { path: 'footer', component: FooterComponent },
-    { path: '**', redirectTo: 'home' } // Redireciona rotas desconhecidas para 'home'
+    {
+        path: 'login', component: LoginComponent
+    },
+    {
+        path: '', component: HomeComponent, children:
+            [
+                { path: 'header', component: HeaderComponent },
+                { path: 'mirror-shape', component: MirrorShapeComponent },
+                { path: 'feature-cards', component: FeatureCardsComponent },
+                { path: 'footer', component: FooterComponent }
+            ]
+    }
+
 ];

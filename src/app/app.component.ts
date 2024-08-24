@@ -23,6 +23,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MirrorShapeComponent } from './components/mirror-shape/mirror-shape.component';
 import { FeatureCardsComponent } from './components/feature-cards/feature-cards.component';
+import { LoginComponent } from './components/login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +38,7 @@ import { FeatureCardsComponent } from './components/feature-cards/feature-cards.
     ReactiveFormsModule,
     //Meus componentes
     NavComponent, HeaderComponent, FooterComponent, MirrorShapeComponent,
-    FeatureCardsComponent
+    FeatureCardsComponent, LoginComponent
   ],
   templateUrl: 'app.component.html',
   styles: [],

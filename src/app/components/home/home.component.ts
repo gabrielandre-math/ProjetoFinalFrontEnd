@@ -13,5 +13,8 @@ import { FeatureCardsComponent } from '../feature-cards/feature-cards.component'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  
+  constructor(private router: Router) {}
+  ngOnInit(): void {
+    this.router.navigate(['home']);
+  }
 }

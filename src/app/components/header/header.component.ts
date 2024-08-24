@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import anime from 'animejs/lib/anime.es.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,9 @@ import anime from 'animejs/lib/anime.es.js';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements AfterViewInit {
+  
+
+
   isMenuOpen = false;
 
   ngAfterViewInit() {
