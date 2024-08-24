@@ -5,6 +5,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { importProvidersFrom } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { provideNgxMask } from 'ngx-mask';
+import { provideHttpClient } from '@angular/common/http'; // Importe provideHttpClient
 
 import { routes } from './app.routes';
 import { provideAnimations, provideNoopAnimations } from '@angular/platform-browser/animations';
@@ -15,6 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideNoopAnimations(),
+    provideHttpClient(), // Adicione o HttpClient aqui
     importProvidersFrom(
       ToastrModule.forRoot({
         timeOut: 4000,
