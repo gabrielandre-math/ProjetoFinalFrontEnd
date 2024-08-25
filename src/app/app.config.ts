@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(), // Utilizando provideHttpClient no lugar de HttpClient (legado)
     importProvidersFrom(
       ToastrModule.forRoot({
-        timeOut: 3000,
+        timeOut: 2000,
         closeButton: true,
         progressBar: true
       })

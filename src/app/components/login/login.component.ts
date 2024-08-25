@@ -36,27 +36,27 @@ export class LoginComponent {
         this.service.successfulLogin(authToken.substring(7));
         this.toast.success("Login bem-sucedido");
 
-        // Temporizador de 3 segundos antes de redirecionar e recarregar
+        // Temporizador de 2 segundos antes de redirecionar e recarregar
         setTimeout(() => {
           this.router.navigate(['']).then(() => {
             window.location.reload();
           });
-        }, 3000);
+        }, 2000);
       } else {
         this.toast.error("Erro ao autenticar. Tente novamente.");
 
-        // Temporizador de 3 segundos antes de recarregar a página em caso de erro
+        // Temporizador de 2 segundos antes de recarregar a página em caso de erro
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2000);
       }
     }, () => {
       this.toast.error("Usuário e/ou senha inválidos");
 
-      // Temporizador de 3 segundos antes de recarregar a página em caso de erro
+      // Temporizador de 2 segundos antes de recarregar a página em caso de erro
       setTimeout(() => {
         window.location.reload();
-      }, 3000);
+      }, 2000);
     });
   }
 }

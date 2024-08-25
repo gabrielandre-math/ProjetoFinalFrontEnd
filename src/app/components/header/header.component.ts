@@ -97,11 +97,19 @@ export class HeaderComponent implements AfterViewInit {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    
+    // Redireciona para a página de login
+    this.router.navigate(['/login']).then(() => {
+      // Exibe o Toastr após o redirecionamento
+      this.toast.info('Você saiu do sistema!', 'Logout');
+      
+      // Espera 2 segundos e recarrega a página para garantir que o usuário veja o Toastr
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000); // 2000 milissegundos = 2 segundos
+    });
   }
-  eventoSair(event: Event) {
-    this.toast.info('Você saiu do sistema!', 'Logout');
-  }
+
   goToDashboard() {
     this.router.navigate(['/dashboard']);
   }
