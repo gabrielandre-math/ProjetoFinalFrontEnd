@@ -23,7 +23,7 @@ export class LoginComponent {
     senha: ''
   };
   email = new FormControl('', [Validators.required, Validators.email]);
-  senha = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  senha = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
   constructor(private toast: ToastrService, private service: AuthService, private router: Router) {}
 
