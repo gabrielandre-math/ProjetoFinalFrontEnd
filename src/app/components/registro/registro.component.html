@@ -1,1 +1,88 @@
-<p>registro works!</p>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Importação do Bootstrap -->
+
+<app-header></app-header>
+<div class="register-container">
+  <div class="register-card">
+    <h2 class="register-title">REGISTRAR</h2>
+    <p class="register-subtitle">Insira seus dados para acessar o sistema</p>
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input id="nome" formControlName="nome" type="text" class="form-control" placeholder="Digite o seu nome completo" />
+        <i class="bi bi-check-circle-fill valid-feedback-icon"></i> <!-- Ícone de check -->
+        <i class="bi bi-x-circle-fill invalid-feedback-icon"></i> <!-- Ícone de erro -->
+        <div *ngIf="registerForm.get('nome').invalid && registerForm.get('nome').touched" class="text-danger">
+          O nome é obrigatório.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input id="email" formControlName="email" type="email" class="form-control" placeholder="Digite o seu e-mail" />
+        <i class="bi bi-check-circle-fill valid-feedback-icon"></i> <!-- Ícone de check -->
+        <i class="bi bi-x-circle-fill invalid-feedback-icon"></i> <!-- Ícone de erro -->
+        <div *ngIf="registerForm.get('email').hasError('emailTaken') && registerForm.get('email').touched" class="text-danger">
+          Este e-mail já está em uso.
+        </div>
+        <div *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched && !registerForm.get('email').hasError('emailTaken')" class="text-danger">
+          E-mail inválido.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input id="cpf" formControlName="cpf" type="text" class="form-control" placeholder="Digite o seu CPF" />
+        <i class="bi bi-check-circle-fill valid-feedback-icon"></i> <!-- Ícone de check -->
+        <i class="bi bi-x-circle-fill invalid-feedback-icon"></i> <!-- Ícone de erro -->
+        <div *ngIf="registerForm.get('cpf').invalid && registerForm.get('cpf').touched" class="text-danger">
+          CPF inválido.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmarCpf">Confirme o CPF</label>
+        <input id="confirmarCpf" formControlName="confirmarCpf" type="text" class="form-control" placeholder="Confirme seu CPF" />
+        <i class="bi bi-check-circle-fill valid-feedback-icon"></i> <!-- Ícone de check -->
+        <i class="bi bi-x-circle-fill invalid-feedback-icon-cpf"></i> <!-- Novo ícone de erro específico para CPF -->
+        <div *ngIf="registerForm.hasError('cpfNotMatch') && registerForm.get('confirmarCpf').touched" class="text-danger">
+          O CPF e a confirmação não correspondem.
+        </div>
+      </div>
+      
+
+      <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input id="telefone" formControlName="telefone" type="text" class="form-control" placeholder="Digite o seu telefone (opcional)" />
+        <i class="bi bi-check-circle-fill valid-feedback-icon"></i> <!-- Ícone de check -->
+        <i class="bi bi-x-circle-fill invalid-feedback-icon"></i> <!-- Ícone de erro -->
+      </div>
+
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input id="senha" formControlName="senha" type="password" class="form-control" placeholder="Digite sua senha" />
+        <i class="bi bi-check-circle-fill valid-feedback-icon"></i> <!-- Ícone de check -->
+        <i class="bi bi-x-circle-fill invalid-feedback-icon"></i> <!-- Ícone de erro -->
+        <div *ngIf="registerForm.get('senha').invalid && registerForm.get('senha').touched" class="text-danger">
+          A senha deve ter pelo menos 6 caracteres.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmarSenha">Confirme sua senha</label>
+        <input id="confirmarSenha" formControlName="confirmarSenha" type="password" class="form-control" placeholder="Confirme sua senha" />
+        <i class="bi bi-check-circle-fill valid-feedback-icon"></i> <!-- Ícone de check -->
+        <i class="bi bi-x-circle-fill invalid-feedback-icon"></i> <!-- Ícone de erro -->
+        <div *ngIf="registerForm.hasError('notSame') && registerForm.get('confirmarSenha').touched" class="text-danger">
+          A confirmação da senha não corresponde.
+        </div>
+      </div>
+
+      <button type="submit" class="btn-register">Registrar</button>
+    </form>
+    
+    <a href="/login" class="login-link">Já possui uma conta?</a>
+  </div>
+</div>
+<app-footer></app-footer>

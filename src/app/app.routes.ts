@@ -5,22 +5,28 @@ import { FeatureCardsComponent } from './components/feature-cards/feature-cards.
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
-import { Component } from '@angular/core';
 import { AuthGuard } from './auth/auth.guard';
+import { RegistroComponent } from './components/registro/registro.component';
 
 export const routes: Routes = [
     {
-        path: 'login', component: LoginComponent
+        path: 'login',
+        component: LoginComponent
     },
     {
-        path: '', component: HomeComponent, canActivate: [AuthGuard], children:
-            [
-                { path: 'home', component: HomeComponent },
-                { path: 'header', component: HeaderComponent },
-                { path: 'mirror-shape', component: MirrorShapeComponent },
-                { path: 'feature-cards', component: FeatureCardsComponent },
-                { path: 'footer', component: FooterComponent }
-            ]
+        path: 'register',
+        component: RegistroComponent
+    },
+    {
+        path: '',
+        component: HomeComponent,
+        canActivate: [AuthGuard],
+        children: [
+            { path: 'home', component: HomeComponent },
+            { path: 'header', component: HeaderComponent },
+            { path: 'mirror-shape', component: MirrorShapeComponent },
+            { path: 'feature-cards', component: FeatureCardsComponent },
+            { path: 'footer', component: FooterComponent }
+        ]
     }
-
 ];

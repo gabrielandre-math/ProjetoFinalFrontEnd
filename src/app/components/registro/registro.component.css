@@ -1,0 +1,151 @@
+*,
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li, blockquote,
+input, textarea, button,
+label, div, td, th {
+  font-family: 'Nunito', Arial, sans-serif;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #ff6e7f, #bfe9ff);
+    font-family: 'Nunito', sans-serif;
+}
+  
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f3f3f3, #ffffff);
+    padding: 20px;
+}
+  
+.register-card {
+    margin-top: 70px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+  
+.register-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 15px;
+}
+  
+.register-subtitle {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+  
+.form-group {
+    position: relative; /* Necessário para alinhar o ícone */
+    margin-bottom: 12px;
+    text-align: left;
+}
+  
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Estilo do ícone de check */
+.form-group .valid-feedback-icon {
+    position: absolute;
+    right: 10px;
+    top: 68%;
+    transform: translateY(-50%);
+    color: #28a745;
+    font-size: 1rem; /* Tamanho do ícone */
+    display: none;
+}
+
+/* Estilo do ícone de erro */
+.form-group .invalid-feedback-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #dc3545;
+    font-size: 1rem; /* Tamanho do ícone */
+    display: none;
+}
+
+/* Exibir o ícone quando o campo é válido */
+.form-control.ng-valid.ng-touched ~ .valid-feedback-icon {
+    display: block;
+}
+
+/* Exibir o ícone quando o campo é inválido */
+.form-control.ng-invalid.ng-touched ~ .invalid-feedback-icon {
+    display: block;
+}
+
+/* Estilo do novo ícone de erro específico para "Confirme o CPF" */
+.form-group .invalid-feedback-icon-cpf {
+    position: absolute;
+    right: 10px;
+    top: 68%;
+    transform: translateY(-50%);
+    color: #dc3545;
+    font-size: 1rem; /* Tamanho do ícone */
+    display: none;
+}
+
+/* Exibir o ícone quando o campo "Confirme o CPF" é inválido */
+.form-control.ng-invalid.ng-touched ~ .invalid-feedback-icon-cpf {
+    display: block;
+}
+
+.btn-register {
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    background-color: #ff77a9;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(255, 119, 169, 0.5);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+  
+.btn-register:hover {
+    background-color: #ff6e7f;
+    box-shadow: 0 8px 16px rgba(255, 110, 127, 0.6);
+}
+  
+.login-link {
+    display: block;
+    margin-top: 15px;
+    color: #ff6e7f;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+  
+.login-link:hover {
+    color: #ff4e5f;
+}
+
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+    .register-card {
+        margin-top: 60px;
+    }
+}
