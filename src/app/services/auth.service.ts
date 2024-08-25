@@ -15,7 +15,9 @@ export class AuthService {
   constructor(private http: HttpClient) { 
 
   }
-
+  checkCpfExists(cpf: string) {
+    return this.http.get<boolean>(`http://localhost:8080/api/check-cpf?cpf=${cpf}`);
+  }
   checkEmailExists(email: string): Observable<boolean> {
     return this.http.get<boolean>(`http://localhost:8080/api/check-email?email=${email}`);
   }

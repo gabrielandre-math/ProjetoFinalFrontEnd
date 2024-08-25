@@ -49,67 +49,52 @@ body, html {
 }
   
 .form-group {
-    position: relative; /* Necessário para alinhar o ícone */
-    margin-bottom: 12px;
+    position: relative;
+    margin-bottom: 12px; /* Reduzida de 20px para 12px */
     text-align: left;
 }
   
 .form-control {
     width: 100%;
     padding: 8px 12px;
-    border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1rem;
+    border: 1px solid #ddd;
     background-color: #f8f9fa;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
-/* Estilo do ícone de check */
-.form-group .valid-feedback-icon {
-    position: absolute;
-    right: 10px;
-    top: 68%;
-    transform: translateY(-50%);
-    color: #28a745;
-    font-size: 1rem; /* Tamanho do ícone */
-    display: none;
+/* Estilo para campo inválido */
+.form-control.ng-invalid.ng-touched {
+    border-color: #dc3545 !important; /* Borda vermelha suave */
+    background-color: #ffe6e6 !important; /* Fundo vermelho muito suave */
 }
 
-/* Estilo do ícone de erro */
-.form-group .invalid-feedback-icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #dc3545;
-    font-size: 1rem; /* Tamanho do ícone */
-    display: none;
+/* Estilo para campo válido */
+.form-control.ng-valid.ng-touched {
+    border-color: #28a745 !important; /* Borda verde suave */
+    background-color: #e6f7ff !important; /* Fundo azul muito suave, mesmo tom que o campo Telefone */
 }
 
-/* Exibir o ícone quando o campo é válido */
-.form-control.ng-valid.ng-touched ~ .valid-feedback-icon {
-    display: block;
+/* Estilo para restaurar o campo ao estado original */
+.form-control.ng-pristine {
+    border-color: #ddd !important; /* Borda cinza padrão */
+    background-color: #f8f9fa !important; /* Fundo cinza padrão */
 }
 
-/* Exibir o ícone quando o campo é inválido */
-.form-control.ng-invalid.ng-touched ~ .invalid-feedback-icon {
-    display: block;
+/* Estilo para a descrição abaixo do campo */
+.feedback-description {
+    margin-top: 0.2rem; /* Reduz o espaçamento entre o campo e a descrição */
+    font-size: 0.85rem;
+    color: #6c757d;
 }
 
-/* Estilo do novo ícone de erro específico para "Confirme o CPF" */
-.form-group .invalid-feedback-icon-cpf {
-    position: absolute;
-    right: 10px;
-    top: 68%;
-    transform: translateY(-50%);
-    color: #dc3545;
-    font-size: 1rem; /* Tamanho do ícone */
-    display: none;
+.text-success {
+    color: #28a745 !important; /* Cor da descrição para campo válido */
 }
 
-/* Exibir o ícone quando o campo "Confirme o CPF" é inválido */
-.form-control.ng-invalid.ng-touched ~ .invalid-feedback-icon-cpf {
-    display: block;
+.text-danger {
+    color: #dc3545 !important; /* Cor da descrição para campo inválido */
 }
 
 .btn-register {
@@ -122,10 +107,17 @@ body, html {
     border: none;
     border-radius: 50px;
     box-shadow: 0 4px 8px rgba(255, 119, 169, 0.5);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
 }
-  
-.btn-register:hover {
+
+.btn-register:disabled {
+    background-color: #ff77a9;
+    color: #ffffff;
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+.btn-register:hover:not(:disabled) {
     background-color: #ff6e7f;
     box-shadow: 0 8px 16px rgba(255, 110, 127, 0.6);
 }
