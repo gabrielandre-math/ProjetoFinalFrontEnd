@@ -5,6 +5,9 @@ p, a, span, li, blockquote,
 input, textarea, button,
 label, div, td, th {
   font-family: 'Nunito', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Container principal para o efeito de vidro */
@@ -53,35 +56,7 @@ label, div, td, th {
     background: radial-gradient(circle, rgba(255,102,154,1) 0%, rgba(255,87,130,0.5) 100%);
 }
 
-/* Ajuste para telas menores */
-@media (max-width: 768px) {
-    .blob {
-        width: 150px;
-        height: 150px;
-    }
-    .main-text {
-        font-size: 2.4rem !important;
-    }
-    .text-container {
-        width: 100% !important;
-    }
-    .glass-button {
-        bottom: 25% !important; 
-        background-color: #FF6E7F;
-        border: none;
-        padding: 10px 20px !important;
-        font-size: 1rem !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .blob {
-        width: 100px;
-        height: 100px;
-    }
-}
-
-/* Glass Effect */
+/* Estilos gerais */
 .glass-effect {
     position: absolute;
     top: 0;
@@ -104,8 +79,8 @@ label, div, td, th {
     font-size: 3.4rem;
     line-height: 1.2;
     min-height: 3rem;
-    min-width: 100%; /* Adiciona uma largura mínima para evitar variações no layout */
-    font-weight: 400; /* Aplica o estilo regular */
+    min-width: 100%;
+    font-weight: 400;
 }
 
 .glass-button {
@@ -118,10 +93,10 @@ label, div, td, th {
     border-radius: 50px;
     transition: background-color 0.3s ease;
     cursor: pointer;
-    position: absolute; /* Faz o botão permanecer em posição fixa */
-    bottom: 40%; /* Define a distância do botão até o fundo da div .glass-effect */
-    left: 50%; /* Centraliza o botão horizontalmente */
-    transform: translateX(-50%); /* Ajusta o deslocamento horizontal para centralizar */
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .glass-button:hover {
@@ -134,7 +109,7 @@ label, div, td, th {
     overflow: hidden;
     border-right: 3px solid #FF6E7F;
     animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
-    margin-bottom: 0; /* Remove qualquer espaço entre o texto e o botão */
+    margin-bottom: 0;
 }
 
 @keyframes typing {
@@ -147,7 +122,6 @@ label, div, td, th {
     50% { border-color: #FF6E7F; }
 }
 
-/* Text Container for Limiting Text Area */
 .text-container {
     max-width: 100%;
     width: 70%;
@@ -158,8 +132,96 @@ label, div, td, th {
     align-items: center;
     margin: 0 auto;
     text-align: center;
-    flex-direction: column; /* Alinha o texto e o botão verticalmente */
+    flex-direction: column;
     position: relative;
-    padding-top: 40px; /* Para que o botão seja posicionado em relação a esse container */
-    padding-bottom: 30px; /* Reduzi o espaçamento abaixo do texto para ajustar a posição do botão */
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+/* iPhone 14 Pro Max */
+@media only screen and (min-device-width: 430px) and (max-device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+  .main-text {
+    font-size: 2.6rem;
+  }
+  .glass-button {
+    bottom: 35% !important;
+    font-size: 1rem !important;
+  }
+}
+
+/* iPhone 12 Pro */
+@media only screen and (min-device-width: 390px) and (max-device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+  .main-text {
+    font-size: 2.4rem;
+  }
+  .glass-button {
+    bottom: 28% !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* iPhone XR */
+@media only screen and (min-device-width: 414px) and (max-device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  .main-text {
+    font-size: 2rem;
+  }
+  .glass-button {
+    bottom: 32% !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* iPhone SE */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+  .main-text {
+    font-size: 1.8rem !important;
+  }
+  .glass-button {
+    bottom: 25% !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Samsung Galaxy S8+ */
+@media only screen and (min-device-width: 360px) and (max-device-height: 740px) and (-webkit-device-pixel-ratio: 4) {
+  .main-text {
+    font-size: 2.0rem;
+  }
+  .glass-button {
+    bottom: 10% !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Telas menores */
+@media (max-width: 768px) {
+  .blob {
+    width: 150px;
+    height: 150px;
+  }
+  .main-text {
+    font-size: 2.2rem;
+  }
+  .text-container {
+    width: 100% !important;
+  }
+  .glass-button {
+    bottom: 35%;
+    background-color: #FF6E7F;
+    border: none;
+    padding: 10px 20px !important;
+    font-size: 0.8rem;
+  }
+}
+
+/* Telas menores */
+@media (max-width: 480px) {
+  .blob {
+    width: 100px;
+    height: 100px;
+  }
+  .glass-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
 }
