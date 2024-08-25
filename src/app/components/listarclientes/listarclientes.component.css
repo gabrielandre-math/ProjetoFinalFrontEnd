@@ -1,0 +1,181 @@
+*,
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li, blockquote,
+input, textarea, button,
+label, div, td, th {
+  font-family: 'Nunito', Arial, sans-serif;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    background-color: #FF6E7F; /* Cor de fundo da página */
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Garante que o body tenha pelo menos 100% da altura da viewport */
+  }
+  
+  #content {
+    margin-top: 220px; /* Aumenta o espaço superior do card */
+    margin-bottom: 270px; /* Aumenta o espaço inferior do card */
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .clientes-container {
+    background-color: #fff;
+    border-radius: 15px; /* Canto arredondado para o container */
+    padding: 20px;
+    margin: 0 auto;
+    width: 95%; /* Largura quase total para smartphones */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais aparente */
+    transition: box-shadow 0.3s ease;
+    overflow-x: auto; /* Permite rolagem horizontal */
+  }
+  
+  .clientes-container:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Sombra mais forte ao passar o mouse */
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #FF6E7F; /* Cor do título */
+    text-align: center;
+  }
+  
+  .table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%; /* Certifica que a tabela ocupa toda a largura disponível */
+    min-width: 600px; /* Mínima largura para ativar a rolagem horizontal em telas pequenas */
+  }
+  
+  .table th:first-child {
+    border-top-left-radius: 15px; /* Canto superior esquerdo arredondado */
+  }
+  
+  .table th:last-child {
+    border-top-right-radius: 15px; /* Canto superior direito arredondado */
+  }
+  
+  .table td:first-child {
+    border-bottom-left-radius: 15px; /* Canto inferior esquerdo arredondado */
+  }
+  
+  .table td:last-child {
+    border-bottom-right-radius: 15px; /* Canto inferior direito arredondado */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    vertical-align: middle;
+    background-color: #f9f9f9;
+  }
+  
+  .table th {
+    background-color: #FF6E7F;
+    color: #fff;
+  }
+  
+  .btn-primary {
+    background-color: #FF6E7F;
+    border-color: #FF6E7F;
+    border-radius: 50%; /* Botões de ação arredondados */
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  
+  .btn-primary i {
+    color: #fff;
+  }
+  
+  .btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+    border-radius: 50%; /* Botões de ação arredondados */
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  
+  .btn-danger i {
+    color: #fff;
+  }
+  
+  .pagination {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .pagination .page-link {
+    color: #FF6E7F; /* Cor da fonte */
+    border-radius: 0; /* Restaurando para o estilo original */
+    background-color: transparent;
+    border: 1px solid #ddd;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #FF6E7F;
+    border-color: #FF6E7F;
+    color: #fff; /* Cor da fonte */
+    border-radius: 50%; /* Deixar apenas o item ativo arredondado */
+  }
+  
+  footer {
+    background-color: #FF6E7F;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    flex-shrink: 0; /* Garante que o footer fique no final da página */
+    bottom: 0; /* Mantém o footer no final */
+  }
+  
+  /* Ajustes para telas maiores */
+  @media (min-width: 768px) {
+    #content {
+      margin-top: 150px;
+      margin-bottom: 210px;
+    }
+  
+    .clientes-container {
+      padding: 30px;
+      width: 80%; /* Largura ajustada para tablets e desktops */
+      max-width: 900px;
+      margin: 50px auto;
+      overflow-x: unset; /* Desativa a rolagem horizontal em telas maiores */
+    }
+  
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    .table th, .table td {
+      padding: 15px;
+      font-size: 16px;
+    }
+  }
+  

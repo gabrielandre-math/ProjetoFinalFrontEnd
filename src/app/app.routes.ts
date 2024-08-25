@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ListarclientesComponent } from './components/listarclientes/listarclientes.component';
 
 export const routes: Routes = [
     {
@@ -16,6 +17,11 @@ export const routes: Routes = [
     {
         path: 'register',
         component: RegistroComponent
+    },
+    { 
+        path: 'listarclientes', 
+        component: ListarclientesComponent
+        
     },
     {
         path: '',
