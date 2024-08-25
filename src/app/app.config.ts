@@ -5,18 +5,20 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { importProvidersFrom } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { provideNgxMask } from 'ngx-mask';
-import { provideHttpClient } from '@angular/common/http'; // Importe provideHttpClient
+import { provideHttpClient } from '@angular/common/http';
 
 import { routes } from './app.routes';
 import { provideAnimations, provideNoopAnimations } from '@angular/platform-browser/animations';
+import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    AuthInterceptorProvider,  // Adiciona o interceptor corretamente
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(),
     provideNoopAnimations(),
-    provideHttpClient(), // Utilizando provideHttpClient no lugar de HttpClient (legado)
+    provideHttpClient(),
     importProvidersFrom(
       ToastrModule.forRoot({
         timeOut: 2000,
@@ -24,6 +26,6 @@ export const appConfig: ApplicationConfig = {
         progressBar: true
       })
     ),
-    provideNgxMask() // Corrigido: provideNgxMask()
+    provideNgxMask()
   ]
 };
