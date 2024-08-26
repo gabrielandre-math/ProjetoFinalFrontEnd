@@ -50,7 +50,7 @@ body, html {
   
 .form-group {
     position: relative;
-    margin-bottom: 12px; /* Reduzida de 20px para 12px */
+    margin-bottom: 12px;
     text-align: left;
 }
   
@@ -64,37 +64,47 @@ body, html {
     transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
+.form-group-grouped {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.form-group-grouped .form-group {
+    flex: 1;
+}
+
 /* Estilo para campo inválido */
 .form-control.ng-invalid.ng-touched {
-    border-color: #dc3545 !important; /* Borda vermelha suave */
-    background-color: #ffe6e6 !important; /* Fundo vermelho muito suave */
+    border-color: #dc3545 !important;
+    background-color: #ffe6e6 !important;
 }
 
 /* Estilo para campo válido */
 .form-control.ng-valid.ng-touched {
-    border-color: #28a745 !important; /* Borda verde suave */
-    background-color: #e6f7ff !important; /* Fundo azul muito suave, mesmo tom que o campo Telefone */
+    border-color: #28a745 !important;
+    background-color: #e6f7ff !important;
 }
 
 /* Estilo para restaurar o campo ao estado original */
 .form-control.ng-pristine {
-    border-color: #ddd !important; /* Borda cinza padrão */
-    background-color: #f8f9fa !important; /* Fundo cinza padrão */
+    border-color: #ddd !important;
+    background-color: #f8f9fa !important;
 }
 
 /* Estilo para a descrição abaixo do campo */
 .feedback-description {
-    margin-top: 0.2rem; /* Reduz o espaçamento entre o campo e a descrição */
+    margin-top: 0.2rem;
     font-size: 0.85rem;
     color: #6c757d;
 }
 
 .text-success {
-    color: #28a745 !important; /* Cor da descrição para campo válido */
+    color: #28a745 !important;
 }
 
 .text-danger {
-    color: #dc3545 !important; /* Cor da descrição para campo inválido */
+    color: #dc3545 !important;
 }
 
 .btn-register {
@@ -139,5 +149,9 @@ body, html {
 @media (max-width: 768px) {
     .register-card {
         margin-top: 60px;
+    }
+
+    .form-group-grouped {
+        flex-direction: column;
     }
 }
