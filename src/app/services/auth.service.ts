@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Credenciais } from '../models/credenciais';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { API_CONFIG } from '../config/api.config';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { Cliente } from '../models/cliente.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,14 @@ export class AuthService {
     });
   }
 
+  findAll(): Observable<Cliente[]> {
+    const token = localStorage.getItem('token');
+    return this.http.get<Cliente[]>('http://localhost:8080/clientes', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+  }
+  
+  
   successfulLogin(authToken: string) {
     localStorage.setItem('token', authToken);
   }

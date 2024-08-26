@@ -1,50 +1,75 @@
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-
 <app-header></app-header>
-<div id="content">
-  <div class="clientes-container shadow p-4 rounded">
-    <h2>Clientes</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>E-mail</th>
-          <th>Valor gasto total</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let element of dataSource.data">
-          <td>{{ element.id }}</td>
-          <td>{{ element.nome }}</td>
-          <td>{{ element.email }}</td>
-          <td>{{ element.valorGasto | currency:'BRL' }}</td>
-          <td>
-            <button class="btn btn-primary btn-sm" aria-label="Edit">
-              <i class="bi bi-pencil-fill"></i>
-            </button>
-            <button class="btn btn-danger btn-sm" aria-label="Delete">
-              <i class="bi bi-trash-fill"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container-fluid d-flex justify-content-center align-items-center flex-column">
+    <div class="row justify-content-center w-100">
+        <div class="col-12 col-md-10 col-lg-8">
+            <div class="card shadow-sm p-4 rounded">
+                <h2 class="text-center text-primary mb-4">Clientes</h2>
+                
+                <!-- Filtro para buscar por nome -->
+                <div class="mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Buscar por nome" 
+                        (input)="applyFilter($event)" 
+                    />
+                </div>
 
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link">1</a></li>
-        <li class="page-item"><a class="page-link">2</a></li>
-        <li class="page-item"><a class="page-link">3</a></li>
-        <li class="page-item">
-          <a class="page-link">Next</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
+                                <th>Data de Criação</th>
+                                <th class="text-center">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let element of paginatedData">
+                                <td>{{ element.id }}</td>
+                                <td>{{ element.nome }}</td>
+                                <td>{{ element.email }}</td>
+                                <td>{{ element.telefone }}</td>
+                                <td>{{ element.dataCriacao | stringToDate | date }}</td>
+                                <td class="d-flex justify-content-center gap-2 align-items-center">
+                                    <button class="btn btn-outline-primary btn-sm" aria-label="Edit">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm" aria-label="Delete">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
+                    <div class="d-flex align-items-center">
+                        <span>Itens por página:</span>
+                        <select class="form-select ms-2" style="width: auto;" [(ngModel)]="pageSize" (change)="onPageSizeChange($event)">
+                            <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+                        </select>
+                    </div>
+                    <ul class="pagination mb-0">
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <button class="page-link" (click)="changePage(currentPage - 1)">Anterior</button>
+                        </li>
+                        <li *ngFor="let page of [].constructor(totalPages); let i = index" 
+                            class="page-item" 
+                            [class.active]="currentPage === i + 1">
+                            <button class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</button>
+                        </li>
+                        <li class="page-item" [class.disabled]="currentPage === totalPages">
+                            <button class="page-link" (click)="changePage(currentPage + 1)">Próximo</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <app-footer></app-footer>
