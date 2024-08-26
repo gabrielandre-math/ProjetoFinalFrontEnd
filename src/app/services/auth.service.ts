@@ -53,13 +53,13 @@ export class AuthService {
     return this.http.put<Cliente>(`${API_CONFIG.baseUrl}/clientes/${id}`, cliente, { headers });
   }
   
-  deleteCliente(id: number): Observable<void> {
+  deleteCliente(id: number): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete<void>(`${API_CONFIG.baseUrl}/clientes/${id}`, {
-      headers: { 'Authorization': `Bearer ${token}` }
+    return this.http.delete<any>(`${API_CONFIG.baseUrl}/clientes/${id}`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+      observe: 'response' // Adiciona isso para acessar o corpo e os headers da resposta
     });
   }
-
   successfulLogin(authToken: string) {
     localStorage.setItem('token', authToken);
   }

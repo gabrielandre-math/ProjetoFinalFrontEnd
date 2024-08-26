@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteClienteDialogComponent } from '../delete-cliente-dialog/delete-cliente-dialog.component';
 import { EditClienteDialogComponent } from '../edit-cliente-dialog/edit-cliente-dialog.component';
+import { ToastrService } from 'ngx-toastr'; // Importando o serviço Toastr
 
 @Component({
   selector: 'app-listarclientes',
@@ -38,7 +39,11 @@ export class ListarclientesComponent implements OnInit {
   totalItems = 0;
   totalPages = 0;
 
-  constructor(private service: AuthService, private dialog: MatDialog) {}
+  constructor(
+    private service: AuthService, 
+    private dialog: MatDialog,
+    private toastr: ToastrService 
+  ) {}
 
   ngOnInit(): void {
     this.findAll();
@@ -103,31 +108,44 @@ export class ListarclientesComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteClienteDialogComponent, {
       data: { nome: cliente.nome }
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.service.deleteCliente(cliente.id).subscribe(() => {
-          this.findAll(); // Atualiza a lista de clientes após deletar
+        this.service.deleteCliente(cliente.id).subscribe({
+          next: (response) => {
+            this.toastr.success('Cliente excluído com sucesso!');
+            this.findAll(); // Atualiza a lista de clientes após deletar
+          },
+          error: (err) => {
+            let errorMessage = 'Erro ao excluir cliente';
+  
+            if (err.status === 400) { // Certifica se é o erro 400 Bad Request
+              const serverMessage = err.error?.message || err.headers?.get('message');
+              if (serverMessage) {
+                errorMessage = serverMessage;
+              }
+            }
+  
+            this.toastr.error(errorMessage);
+          }
         });
       }
     });
   }
+  
+  
 
   openEditDialog(cliente: Cliente): void {
     const dialogRef = this.dialog.open(EditClienteDialogComponent, {
       data: cliente
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Passando o ID do cliente e o objeto resultante do diálogo
         this.service.updateCliente(cliente.id, result).subscribe(() => {
           this.findAll(); // Atualiza a lista de clientes após a edição
         });
       }
     });
   }
-  
-  
-  
 }
