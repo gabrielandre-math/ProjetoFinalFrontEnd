@@ -6,6 +6,9 @@ import { AuthService } from '../../services/auth.service';
 import { Cliente } from '../../models/cliente.model';
 import { StringToDatePipe } from '../../models/StringToDatePipe';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteClienteDialogComponent } from '../delete-cliente-dialog/delete-cliente-dialog.component';
 
 @Component({
   selector: 'app-listarclientes',
@@ -15,14 +18,16 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HeaderComponent,
     FormsModule,
-    StringToDatePipe
+    StringToDatePipe,
+    MatDialogModule,
+    DeleteClienteDialogComponent
   ],
   templateUrl: './listarclientes.component.html',
   styleUrls: ['./listarclientes.component.css']
 })
 export class ListarclientesComponent implements OnInit {
   ELEMENT_DATA: Cliente[] = [];
-  originalData: Cliente[] = []; // Array para armazenar os dados originais
+  originalData: Cliente[] = [];
   paginatedData: Cliente[] = [];
   pageSizeOptions: number[] = [5, 10, 25, 50];
   pageSize = 5;
@@ -30,7 +35,7 @@ export class ListarclientesComponent implements OnInit {
   totalItems = 0;
   totalPages = 0;
 
-  constructor(private service: AuthService) {}
+  constructor(private service: AuthService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.findAll();
@@ -46,7 +51,7 @@ export class ListarclientesComponent implements OnInit {
           }
           return cliente;
         });
-        this.originalData = [...this.ELEMENT_DATA]; // Guardar os dados originais
+        this.originalData = [...this.ELEMENT_DATA];
         this.totalItems = this.ELEMENT_DATA.length;
         this.totalPages = Math.ceil(this.totalItems / this.pageSize);
         this.updatePaginatedData();
@@ -89,5 +94,19 @@ export class ListarclientesComponent implements OnInit {
     this.totalItems = this.ELEMENT_DATA.length;
     this.totalPages = Math.ceil(this.totalItems / this.pageSize);
     this.updatePaginatedData();
+  }
+
+  openDeleteDialog(cliente: Cliente): void {
+    const dialogRef = this.dialog.open(DeleteClienteDialogComponent, {
+      data: { nome: cliente.nome }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.service.deleteCliente(cliente.id).subscribe(() => {
+          this.findAll(); // Atualiza a lista de clientes após deletar
+        });
+      }
+    });
   }
 }

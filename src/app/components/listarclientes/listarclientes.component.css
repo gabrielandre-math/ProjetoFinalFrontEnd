@@ -129,6 +129,24 @@ footer {
   position: relative;
   width: 100%;
 }
+/* Estilo para a barra de rolagem */
+.table-responsive::-webkit-scrollbar {
+    height: 8px; /* Altura da barra de rolagem */
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Cor do trilho */
+    border-radius: 10px; /* Arredondamento do trilho */
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #FF6E7F; /* Cor da barra de rolagem */
+    border-radius: 10px; /* Arredondamento da barra */
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background-color: #FF4E5F; /* Cor da barra ao passar o mouse */
+}
 
 @media (min-width: 768px) {
   .container-fluid {

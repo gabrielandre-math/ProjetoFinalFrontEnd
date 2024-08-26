@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Credenciais } from '../models/credenciais';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { API_CONFIG } from '../config/api.config';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -13,22 +12,28 @@ export class AuthService {
 
   jwtHelper: JwtHelperService = new JwtHelperService();
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {}
 
+  checkCpfExists(cpf: string): Observable<boolean> {
+    return this.http.get<boolean>(`http://localhost:8080/api/check-cpf`, {
+      params: new HttpParams().set('cpf', cpf)
+    });
   }
-  checkCpfExists(cpf: string) {
-    return this.http.get<boolean>(`http://localhost:8080/api/check-cpf?cpf=${cpf}`);
-  }
+
   checkEmailExists(email: string): Observable<boolean> {
-    return this.http.get<boolean>(`http://localhost:8080/api/check-email?email=${email}`);
+    return this.http.get<boolean>(`http://localhost:8080/api/check-email`, {
+      params: new HttpParams().set('email', email)
+    });
   }
-  authenticate(creds: any) {
+
+  authenticate(creds: any): Observable<any> {
     return this.http.post(`${API_CONFIG.baseUrl}/login`, creds, {
       observe: 'response',
       responseType: 'text'
     });
   }
-  register(newUser: any) {
+
+  register(newUser: any): Observable<any> {
     return this.http.post('http://localhost:8080/clientes', newUser, {
       observe: 'response',
       responseType: 'text'
@@ -41,8 +46,14 @@ export class AuthService {
       headers: { 'Authorization': `Bearer ${token}` }
     });
   }
-  
-  
+
+  deleteCliente(id: number): Observable<void> {
+    const token = localStorage.getItem('token');
+    return this.http.delete<void>(`${API_CONFIG.baseUrl}/clientes/${id}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+  }
+
   successfulLogin(authToken: string) {
     localStorage.setItem('token', authToken);
   }
@@ -55,5 +66,4 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
   }
-
 }
