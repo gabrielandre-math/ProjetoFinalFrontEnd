@@ -5,10 +5,11 @@ import { HeaderComponent } from '../header/header.component';
 import { AuthService } from '../../services/auth.service';
 import { Cliente } from '../../models/cliente.model';
 import { StringToDatePipe } from '../../models/StringToDatePipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteClienteDialogComponent } from '../delete-cliente-dialog/delete-cliente-dialog.component';
+import { EditClienteDialogComponent } from '../edit-cliente-dialog/edit-cliente-dialog.component';
 
 @Component({
   selector: 'app-listarclientes',
@@ -18,9 +19,11 @@ import { DeleteClienteDialogComponent } from '../delete-cliente-dialog/delete-cl
     FooterComponent,
     HeaderComponent,
     FormsModule,
+    ReactiveFormsModule,
     StringToDatePipe,
     MatDialogModule,
-    DeleteClienteDialogComponent
+    DeleteClienteDialogComponent,
+    EditClienteDialogComponent,
   ],
   templateUrl: './listarclientes.component.html',
   styleUrls: ['./listarclientes.component.css']
@@ -109,4 +112,22 @@ export class ListarclientesComponent implements OnInit {
       }
     });
   }
+
+  openEditDialog(cliente: Cliente): void {
+    const dialogRef = this.dialog.open(EditClienteDialogComponent, {
+      data: cliente
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Passando o ID do cliente e o objeto resultante do diálogo
+        this.service.updateCliente(cliente.id, result).subscribe(() => {
+          this.findAll(); // Atualiza a lista de clientes após a edição
+        });
+      }
+    });
+  }
+  
+  
+  
 }

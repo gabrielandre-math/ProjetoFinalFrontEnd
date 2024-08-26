@@ -1,0 +1,136 @@
+*,
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li, blockquote,
+input, textarea, button,
+label, div, td, th {
+  font-family: 'Nunito', Arial, sans-serif;
+  box-sizing: border-box;
+}
+.btn-save:disabled {
+    background-color: #ff77a9;
+    color: #ffffff;
+    opacity: 0.6;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+  
+  .btn-save:hover:not(:disabled) {
+    background-color: #ff6e7f;
+    box-shadow: 0 8px 16px rgba(255, 110, 127, 0.6);
+  }
+  
+/* Estilos principais para mobile */
+.edit-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.edit-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FF6E7F;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  width: 400px !important; 
+  position: relative;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px; 
+  border-radius: 8px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  flex-direction: column; /* Alinha os botões em coluna no mobile */
+}
+
+.btn-cancel,
+.btn-save {
+  width: 100%;
+  padding: 12px 0; 
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  border: none;
+  margin-bottom: 10px; /* Adiciona espaçamento entre os botões */
+}
+
+.btn-cancel {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.btn-cancel:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-save {
+  background-color: #ff77a9;
+  color: white;
+  box-shadow: 0 4px 8px rgba(255, 119, 169, 0.5);
+}
+
+.btn-save:hover {
+  background-color: #ff6e7f;
+  box-shadow: 0 8px 16px rgba(255, 110, 127, 0.6);
+}
+
+/* Estilo para campo inválido */
+.form-control.ng-invalid.ng-touched {
+  border-color: #dc3545 !important;
+  background-color: #ffe6e6 !important;
+}
+
+/* Estilo para campo válido */
+.form-control.ng-valid.ng-touched {
+  border-color: #28a745 !important;
+  background-color: #e6f7ff !important;
+}
+
+/* Estilo para restaurar o campo ao estado original */
+.form-control.ng-pristine {
+  border-color: #ddd !important;
+  background-color: #f8f9fa !important;
+}
+
+/* Estilos para telas maiores (desktop) */
+@media (min-width: 768px) {
+  .edit-card {
+    max-width: 500px;
+    padding: 30px;
+  }
+
+  .edit-title {
+    font-size: 2rem;
+  }
+
+  .dialog-actions {
+    flex-direction: row; /* Alinha os botões lado a lado no desktop */
+  }
+
+  .btn-cancel,
+  .btn-save {
+    width: 48%;
+    margin-bottom: 0;
+  }
+}

@@ -37,7 +37,7 @@
                                 <td>{{ element.telefone }}</td>
                                 <td>{{ element.dataCriacao | stringToDate | date }}</td>
                                 <td class="d-flex justify-content-center gap-2 align-items-center">
-                                    <button class="btn btn-outline-primary btn-sm" aria-label="Edit">
+                                    <button class="btn btn-outline-primary btn-sm" aria-label="Edit" (click)="openEditDialog(element)">
                                         <i class="bi bi-pencil"></i>
                                     </button>
                                     <button class="btn btn-outline-danger btn-sm" aria-label="Delete" (click)="openDeleteDialog(element)">

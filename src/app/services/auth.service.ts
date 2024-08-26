@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { API_CONFIG } from '../config/api.config';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map, Observable } from 'rxjs';
@@ -47,6 +47,12 @@ export class AuthService {
     });
   }
 
+  updateCliente(id: number, cliente: Partial<Cliente>): Observable<Cliente> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<Cliente>(`${API_CONFIG.baseUrl}/clientes/${id}`, cliente, { headers });
+  }
+  
   deleteCliente(id: number): Observable<void> {
     const token = localStorage.getItem('token');
     return this.http.delete<void>(`${API_CONFIG.baseUrl}/clientes/${id}`, {
