@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ListarclientesComponent } from './components/listarclientes/listarclientes.component';
+import { DashboardComponent } from './analytics/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
@@ -21,7 +22,10 @@ export const routes: Routes = [
     { 
         path: 'listarclientes', 
         component: ListarclientesComponent
-        
+    },
+    {
+        path: 'dashboard',  // Nova rota para o Dashboard
+        component: DashboardComponent  // Protegendo a rota com o AuthGuard, se necessário
     },
     {
         path: '',

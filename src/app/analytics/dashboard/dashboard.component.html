@@ -1,0 +1,41 @@
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+<app-header></app-header>
+<div class="container mt-5 mb-5 pt-4 pb-4">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2 class="dashboard-title">Dashboard de Analytics</h2>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                <h4 class="card-title text-center">Distribuição de Comandas</h4>
+                <canvas id="lineChartDistribuicao" class="line-chart-shadow"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                <h4 class="card-title text-center">Status das Comandas</h4>
+                <canvas id="lineChartStatus" class="line-chart-shadow"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                <h4 class="card-title text-center">Comandas por Prioridade</h4>
+                <canvas id="pieChartPrioridade"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                <h4 class="card-title text-center">Comandas por Status</h4>
+                <canvas id="pieChartStatus"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
