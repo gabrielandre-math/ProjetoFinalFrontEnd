@@ -1,0 +1,73 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="comandas-header">
+        <h2>Comandas</h2>
+        <div class="update-info">
+            <p>Última atualização: {{ ultimaAtualizacao | date:'dd/MM/yyyy HH:mm:ss' }}</p>
+            <button (click)="atualizarComandas()" class="btn btn-primary">Atualizar</button>
+        </div>
+    </div>
+    
+
+    <!-- Legenda dos status -->
+    <div class="status-legend">
+        <p>Descrição: 
+            <span class="status-circle bg-primary"></span> Aberto 
+            <span class="status-circle bg-warning"></span> Em andamento 
+            <span class="status-circle bg-success"></span> Encerrado
+        </p>
+    </div>
+
+    <div class="mb-3">
+        <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Buscar por título, cliente ou mesa" 
+            (input)="applyFilter($event)" 
+        />
+    </div>
+
+    <div class="row">
+        <div *ngFor="let comanda of paginatedComandas" class="col-md-4">
+            <div class="comanda-card card shadow">
+                <img src="{{ comanda.imagemUrl }}" class="card-img-top" alt="Imagem da Comanda">
+                <div class="card-body">
+                    <h5 class="card-title">{{ comanda.titulo }}</h5>
+                    <p class="card-text">Mesa: {{ comanda.mesa }}</p>
+                    <p class="card-text">Cliente: {{ comanda.nomeCliente }}</p>
+                    <p class="card-text">Status: 
+                        <span [ngClass]="{
+                            'badge-aberto': comanda.status === 'ABERTO',
+                            'badge-andamento': comanda.status === 'ANDAMENTO',
+                            'badge-encerrado': comanda.status === 'ENCERRADO'
+                        }">{{ comanda.status }}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adicionando paginação -->
+    <div class="pagination-container">
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item" [class.disabled]="currentPage === 1">
+                    <a class="page-link" (click)="previousPage()" aria-label="Anterior">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+                    <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+                </li>
+                <li class="page-item" [class.disabled]="currentPage === totalPages">
+                    <a class="page-link" (click)="nextPage()" aria-label="Próximo">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<app-footer></app-footer>

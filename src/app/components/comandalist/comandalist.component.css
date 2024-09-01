@@ -1,0 +1,179 @@
+*,
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li, blockquote,
+input, textarea, button,
+label, div, td, th {
+  font-family: 'Nunito', Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Configurações da container */
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto; /* Centraliza o conteúdo */
+    max-width: 1200px; /* Limita a largura máxima do conteúdo */
+}
+
+/* Estilos para o header das comandas */
+.comandas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 110px; /* Adiciona espaço acima do título */
+    flex-wrap: wrap; /* Permite que os elementos quebrem linha em telas menores */
+}
+
+.update-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinha os itens à direita */
+    flex-wrap: nowrap; /* Mantém os itens em linha reta em telas maiores */
+    width: auto; /* Ajuste de largura automática */
+}
+
+.update-info p {
+    margin-right: 15px;
+    font-weight: bold;
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+}
+
+.update-info button {
+    margin-left: 10px; /* Adiciona espaço entre a data e o botão */
+    white-space: nowrap; /* Impede que o botão quebre linha */
+}
+
+@media (max-width: 768px) {
+    .update-info {
+        flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+        justify-content: space-between; /* Ajusta a posição dos elementos em telas pequenas */
+        width: 100%; /* Faz o container ocupar toda a largura em telas menores */
+    }
+
+    .update-info p, 
+    .update-info button {
+        text-align: left; /* Garante alinhamento à esquerda em telas pequenas */
+        margin: 5px 0; /* Adiciona espaçamento vertical entre os itens */
+    }
+}
+
+@media (min-width: 768px) {
+    .comandas-header {
+        justify-content: space-between;
+    }
+
+    .update-info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1;
+        flex-wrap: nowrap;
+    }
+
+    .update-info p, 
+    .update-info button {
+        white-space: nowrap;
+    }
+}
+
+/* Estilos dos cards */
+.comanda-card {
+    margin-bottom: 20px;
+    border-radius: 16px; /* Arredondamento das bordas */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+    overflow: hidden; /* Para garantir que o conteúdo do card não ultrapasse as bordas arredondadas */
+}
+
+.card {
+    border: none;
+    background-color: #fff; /* Cor de fundo do card */
+}
+
+.card-img-top {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.card-body {
+    padding: 20px; /* Espaçamento interno do card */
+}
+
+/* Estilos de Paginação */
+.pagination-container {
+    margin-top: 20px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #FF6E7F;
+    border-color: #FF6E7F;
+    color: #fff; /* Cor do texto da página ativa */
+}
+
+.pagination .page-link {
+    color: #FF6E7F;
+    cursor: pointer; /* Define que o cursor deve ser uma mãozinha */
+}
+
+.pagination .page-link:hover {
+    color: #FF6E7F;
+    background-color: #f8f9fa; /* Mantém a cor de fundo leve ao passar o mouse */
+}
+
+/* Estilos das Legendas */
+.status-legend {
+    margin-bottom: 15px;
+}
+
+.status-legend p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.status-circle {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Estilos dos Badges */
+.badge-aberto {
+    background-color: #007bff; /* Azul */
+    color: #fff;
+    font-weight: lighter;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.badge-andamento {
+    background-color: #FFC107; /* Amarelo */
+    color: #fff;
+    font-weight: lighter;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.badge-encerrado {
+    background-color: #28A745; /* Verde */
+    color: #fff;
+    font-weight: lighter;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+/* Adicionando espaçamento às colunas dos cards */
+.row .col-md-4 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Ajustando margem nas laterais para evitar que os cards encostem nas bordas da tela */
+.row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
