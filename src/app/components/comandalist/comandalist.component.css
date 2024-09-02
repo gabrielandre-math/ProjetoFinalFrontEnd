@@ -7,10 +7,12 @@ label, div, td, th {
   font-family: 'Nunito', Arial, sans-serif;
   box-sizing: border-box;
 }
+
 img {
     max-width: 50%;
     margin: 0 auto;
 }
+
 /* Configurações da container */
 .container {
     padding-left: 20px;
@@ -87,6 +89,7 @@ img {
     border-radius: 16px; /* Arredondamento das bordas */
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
     overflow: hidden; /* Para garantir que o conteúdo do card não ultrapasse as bordas arredondadas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
 }
 
 .card {
@@ -197,4 +200,31 @@ img {
 .row {
     margin-left: -10px;
     margin-right: -10px;
+}
+
+/* Botões de status lado a lado */
+.card-body .btn {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+/* Remover margem do último botão */
+.card-body .btn:last-child {
+    margin-right: 0;
+}
+
+/* Responsividade para os botões */
+@media (max-width: 768px) {
+    .card-body .btn {
+        width: 100%; /* Botões ocupam toda a largura em telas pequenas */
+        margin-bottom: 10px; /* Espaçamento entre botões em telas pequenas */
+    }
+}
+
+/* Estilos de hover e animação com anime.js */
+.comanda-card:hover {
+    cursor: pointer;
+    transform: translateY(-10px); /* Eleva o card, dando a impressão de flutuar */
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada no hover */
 }

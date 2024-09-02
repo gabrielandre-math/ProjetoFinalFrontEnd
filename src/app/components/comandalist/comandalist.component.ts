@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ComandaService } from '../../services/comanda.service';
 import { CommonModule } from '@angular/common';
@@ -6,6 +6,7 @@ import { Comanda } from '../../models/Comanda';
 import { Subscription, interval } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import anime from 'animejs/lib/anime.es.js';
 
 @Component({
   selector: 'app-comandalist',
@@ -14,7 +15,7 @@ import { FooterComponent } from '../footer/footer.component';
   templateUrl: './comandalist.component.html',
   styleUrls: ['./comandalist.component.css']
 })
-export class ComandaListComponent implements OnInit, OnDestroy, AfterViewChecked {
+export class ComandaListComponent implements OnInit, OnDestroy, AfterViewChecked, AfterViewInit {
   comandas: Comanda[] = [];
   paginatedComandas: Comanda[] = [];
   filteredComandas: Comanda[] = [];
@@ -34,6 +35,32 @@ export class ComandaListComponent implements OnInit, OnDestroy, AfterViewChecked
   ngOnInit(): void {
     this.atualizarComandas();
     this.startAutoUpdate();
+  }
+
+  ngAfterViewInit(): void {
+    const cards = document.querySelectorAll('.comanda-card');
+
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        anime({
+          targets: card,
+          scale: 1.05,  // Leve aumento no tamanho do card
+          boxShadow: '0px 20px 30px rgba(0, 0, 0, 0.15)', // Sombra mais pronunciada no hover
+          easing: 'easeInOutQuad',
+          duration: 300
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        anime({
+          targets: card,
+          scale: 1,
+          boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.1)', // Retorna à sombra original
+          easing: 'easeInOutQuad',
+          duration: 300
+        });
+      });
+    });
   }
 
   ngOnDestroy(): void {
@@ -56,19 +83,34 @@ export class ComandaListComponent implements OnInit, OnDestroy, AfterViewChecked
     }
   }
 
+  changeComandaStatus(comanda: Comanda, novoStatus: number): void {
+    this.comandaService.updateComandaStatus(comanda.id, novoStatus).subscribe({
+        next: (updatedComanda: Comanda) => {
+            const index = this.comandas.findIndex(c => c.id === updatedComanda.id);
+            if (index !== -1) {
+                this.comandas[index].status = this.mapStatusToText(novoStatus);
+                this.paginateComandas();
+                this.toastr.success('Status da comanda atualizado com sucesso!');
+            }
+        },
+        error: (err) => {
+            this.toastr.error('Erro ao atualizar o status da comanda');
+            console.error(err);
+        }
+    });
+  }
+
   atualizarComandas(showSuccessToast: boolean = true): void {
     this.comandaService.getComandas().subscribe({
       next: (data: Comanda[]) => {
         console.log(`Total de comandas recebidas: ${data.length}`);
 
-        // Mapeia os status numéricos para texto antes de armazenar as comandas
         this.comandas = data.map(comanda => ({
           ...comanda,
           status: this.mapStatusToText(parseInt(comanda.status, 10)),
           produtoId: this.extractProdutoId(comanda)
         }));
 
-        // Ordena as comandas pela ordem: "Em Andamento", "Aberto", "Encerrado"
         this.comandas.sort((a, b) => this.compareStatus(a.status, b.status));
 
         this.filteredComandas = [...this.comandas];
@@ -89,7 +131,7 @@ export class ComandaListComponent implements OnInit, OnDestroy, AfterViewChecked
   }
 
   extractProdutoId(comanda: Comanda): number {
-    return comanda.produtoId || 1; // Ajuste conforme necessário
+    return comanda.produtoId || 1; 
   }
 
   mapStatusToText(status: number): string {
