@@ -102,23 +102,41 @@ label, div, td, th {
 
 /* Estilos de Paginação */
 .pagination-container {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.pagination {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 20px;
+}
+
+.pagination .page-link {
+    color: #6c757d;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 8px 16px;
+    margin: 0 4px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .pagination .page-item.active .page-link {
     background-color: #FF6E7F;
     border-color: #FF6E7F;
-    color: #fff; /* Cor do texto da página ativa */
+    color: #fff;
 }
 
-.pagination .page-link {
-    color: #FF6E7F;
-    cursor: pointer; /* Define que o cursor deve ser uma mãozinha */
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+    border-radius: 10px;
 }
 
 .pagination .page-link:hover {
-    color: #FF6E7F;
-    background-color: #f8f9fa; /* Mantém a cor de fundo leve ao passar o mouse */
+    background-color: #e9ecef;
+    color: #495057;
 }
 
 /* Estilos das Legendas */

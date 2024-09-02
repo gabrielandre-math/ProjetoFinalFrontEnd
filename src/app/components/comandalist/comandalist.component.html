@@ -50,24 +50,19 @@
 
     <!-- Adicionando paginação -->
     <div class="pagination-container">
-        <nav>
-            <ul class="pagination justify-content-center">
-                <li class="page-item" [class.disabled]="currentPage === 1">
-                    <a class="page-link" (click)="previousPage()" aria-label="Anterior">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
-                    <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
-                </li>
-                <li class="page-item" [class.disabled]="currentPage === totalPages">
-                    <a class="page-link" (click)="nextPage()" aria-label="Próximo">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <ul class="pagination mb-0">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+                <button class="page-link" (click)="previousPage()">Anterior</button>
+            </li>
+            <li *ngFor="let page of pages" class="page-item" [class.active]="currentPage === page">
+                <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === totalPages">
+                <button class="page-link" (click)="nextPage()">Próximo</button>
+            </li>
+        </ul>
     </div>
+    
 </div>
 
 <app-footer></app-footer>
