@@ -1,5 +1,5 @@
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 <app-header></app-header>
-
 <div class="container">
     <div class="comandas-header">
         <h2>Comandas</h2>
@@ -9,8 +9,6 @@
         </div>
     </div>
     
-
-    <!-- Legenda dos status -->
     <div class="status-legend">
         <p>Descrição: 
             <span class="status-circle bg-primary"></span> Aberto 
@@ -31,7 +29,8 @@
     <div class="row">
         <div *ngFor="let comanda of paginatedComandas" class="col-md-4">
             <div class="comanda-card card shadow">
-                <img src="{{ comanda.imagemUrl }}" class="card-img-top" alt="Imagem da Comanda">
+                <!-- Ajuste para carregar a imagem diretamente do backend -->
+                <img [src]="'http://localhost:8080/api/produtos/' + comanda.produtoId + '/imagem'" class="card-img-top" alt="Imagem da Comanda">
                 <div class="card-body">
                     <h5 class="card-title">{{ comanda.titulo }}</h5>
                     <p class="card-text">Mesa: {{ comanda.mesa }}</p>
@@ -48,7 +47,6 @@
         </div>
     </div>
 
-    <!-- Adicionando paginação -->
     <div class="pagination-container">
         <ul class="pagination mb-0">
             <li class="page-item" [class.disabled]="currentPage === 1">
@@ -62,7 +60,5 @@
             </li>
         </ul>
     </div>
-    
 </div>
-
 <app-footer></app-footer>

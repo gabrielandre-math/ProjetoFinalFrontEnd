@@ -64,7 +64,8 @@ export class ComandaListComponent implements OnInit, OnDestroy, AfterViewChecked
         // Mapeia os status numéricos para texto antes de armazenar as comandas
         this.comandas = data.map(comanda => ({
           ...comanda,
-          status: this.mapStatusToText(parseInt(comanda.status, 10))
+          status: this.mapStatusToText(parseInt(comanda.status, 10)),
+          produtoId: this.extractProdutoId(comanda)
         }));
 
         // Ordena as comandas pela ordem: "Em Andamento", "Aberto", "Encerrado"
@@ -85,6 +86,10 @@ export class ComandaListComponent implements OnInit, OnDestroy, AfterViewChecked
         console.error(err);
       }
     });
+  }
+
+  extractProdutoId(comanda: Comanda): number {
+    return comanda.produtoId || 1; // Ajuste conforme necessário
   }
 
   mapStatusToText(status: number): string {
@@ -108,11 +113,9 @@ export class ComandaListComponent implements OnInit, OnDestroy, AfterViewChecked
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value.toLowerCase().trim();
     
-    // Divide o filtro em palavras-chave (removendo espaços em branco adicionais)
     const keywords = filterValue.split(/\s+/);
   
     this.filteredComandas = this.comandas.filter(comanda =>
-      // Combina a pesquisa em todos os campos relevantes, verificando se cada palavra-chave está presente
       keywords.every(keyword =>
         comanda.titulo.toLowerCase().includes(keyword) ||
         comanda.nomeCliente.toLowerCase().includes(keyword) ||
@@ -123,7 +126,7 @@ export class ComandaListComponent implements OnInit, OnDestroy, AfterViewChecked
   
     this.totalPages = Math.ceil(this.filteredComandas.length / this.itemsPerPage);
     this.pages = Array.from({ length: this.totalPages }, (v, k) => k + 1);
-    this.currentPage = 1; // Reset to the first page
+    this.currentPage = 1; 
     this.paginateComandas();
   }
 
