@@ -1,0 +1,103 @@
+*,
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li, blockquote,
+input, textarea, button,
+label, div, td, th {
+  font-family: 'Nunito', Arial, sans-serif;
+  box-sizing: border-box;
+}
+.container {
+    max-width: 800px; /* Define a largura máxima do container para desktop */
+    margin: 50px auto;
+  }
+  
+  .edit-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-align: center;
+    margin: 150px auto;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .edit-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .edit-subtitle {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 30px;
+  }
+  
+  .form-group-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .form-group {
+    flex: 0 0 48%; /* Faz com que cada campo ocupe 48% da largura em desktop */
+    position: relative;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+  }
+  
+  .form-control::placeholder {
+    color: #aaa;
+  }
+  
+  .btn-save {
+    background-color: #ff77a9;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(255, 119, 169, 0.5);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .btn-save:hover {
+    background-color: #ff6e7f;
+    box-shadow: 0 8px 16px rgba(255, 110, 127, 0.6);
+  }
+  
+  .btn-save:disabled {
+    background-color: #ff77a9;
+    color: #ffffff;
+    opacity: 0.6;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+  
+  /* Estilos específicos para telas menores (mobile) */
+  @media (max-width: 768px) {
+    .form-group {
+      flex: 0 0 100%; /* Em telas menores, os campos ocupam 100% da largura */
+    }
+  
+    .container {
+      max-width: 100%; /* Ajuste para mobile para ocupar 100% da largura disponível */
+      padding: 0 15px; /* Adiciona padding nas laterais para melhor visualização em mobile */
+    }
+  }
+  

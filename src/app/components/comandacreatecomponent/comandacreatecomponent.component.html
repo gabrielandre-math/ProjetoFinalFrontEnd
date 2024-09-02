@@ -1,57 +1,69 @@
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<app-header></app-header>
 <div class="container mt-5">
-    <h2>Criar Nova Comanda</h2>
+  <div class="edit-card">
+    <h2 class="edit-title">Criar Nova Comanda</h2>
+    <p class="edit-subtitle">Insira os dados necessários para criar a comanda</p>
     <form [formGroup]="comandaForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="titulo">Título</label>
-        <input id="titulo" formControlName="titulo" class="form-control" />
+      <div class="form-group-container">
+        <div class="form-group">
+          <label for="titulo">Título</label>
+          <input id="titulo" formControlName="titulo" class="form-control" placeholder="Digite o título da comanda" />
+        </div>
+
+        <div class="form-group">
+          <label for="mesa">Mesa</label>
+          <input id="mesa" formControlName="mesa" class="form-control" placeholder="Digite o número da mesa" />
+        </div>
       </div>
-      
+
+      <div class="form-group-container">
+        <div class="form-group">
+          <label for="produtos">Produtos</label>
+          <select id="produtos" formControlName="produtosSelecionados" class="form-control">
+            <option value="" disabled selected>Selecione o produto</option>
+            <option *ngFor="let produto of produtos" [value]="produto.id">{{ produto.nome }}</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="quantidade">Quantidade</label>
+          <input id="quantidade" formControlName="quantidade" type="number" class="form-control" placeholder="Digite a quantidade" />
+        </div>
+      </div>
+
+      <div class="form-group-container">
+        <div class="form-group">
+          <label for="prioridade">Prioridade</label>
+          <select id="prioridade" formControlName="prioridade" class="form-control">
+            <option value="0">Baixa</option>
+            <option value="1">Média</option>
+            <option value="2">Alta</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="cliente">Cliente</label>
+          <select id="cliente" formControlName="cliente" class="form-control">
+            <option value="" disabled selected>Selecione o cliente</option>
+            <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
+          </select>
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="observacoes">Observações</label>
-        <textarea id="observacoes" formControlName="observacoes" class="form-control"></textarea>
+        <textarea id="observacoes" formControlName="observacoes" class="form-control" placeholder="Digite observações"></textarea>
       </div>
-      
-      <div class="form-group">
-        <label for="mesa">Mesa</label>
-        <input id="mesa" formControlName="mesa" class="form-control" />
-      </div>
-      
-      <div class="form-group">
-        <label for="produtos">Produtos</label>
-        <select id="produtos" formControlName="produtosSelecionados" class="form-control" multiple>
-          <option *ngFor="let produto of produtos" [value]="produto.id">{{ produto.nome }}</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="quantidade">Quantidade</label>
-        <input id="quantidade" formControlName="quantidade" type="number" class="form-control" />
-      </div>
-      
-      <div class="form-group">
-        <label for="prioridade">Prioridade</label>
-        <select id="prioridade" formControlName="prioridade" class="form-control">
-          <option value="0">Baixa</option>
-          <option value="1">Média</option>
-          <option value="2">Alta</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="cliente">Cliente</label>
-        <select id="cliente" formControlName="cliente" class="form-control">
-          <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
-        </select>
-      </div>
-      
+
       <div class="form-group">
         <label for="funcionario">Funcionário</label>
         <select id="funcionario" formControlName="funcionario" class="form-control">
+          <option value="" disabled selected>Selecione o funcionário</option>
           <option *ngFor="let funcionario of funcionarios" [value]="funcionario.id">{{ funcionario.nome }}</option>
         </select>
       </div>
 
-      <!-- Adiciona o campo de status -->
       <div class="form-group">
         <label for="status">Status</label>
         <select id="status" formControlName="status" class="form-control">
@@ -61,6 +73,8 @@
         </select>
       </div>
       
-      <button type="submit" class="btn btn-success">Criar Comanda</button>
+      <button type="submit" class="btn-save" [disabled]="comandaForm.invalid">Criar Comanda</button>
     </form>
+  </div>
 </div>
+<app-footer></app-footer>

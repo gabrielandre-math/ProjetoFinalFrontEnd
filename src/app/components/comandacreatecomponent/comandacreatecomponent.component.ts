@@ -10,11 +10,13 @@ import { Cliente } from '../../models/cliente.model';
 import { ClienteService } from '../../services/cliente.service';
 import { FuncionarioService } from '../../services/funcionario.service';
 import { Funcionario } from '../../models/funcionario';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-comanda-create',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule], // standalone
+  imports: [CommonModule, ReactiveFormsModule, HeaderComponent, FooterComponent], // standalone
   templateUrl: './comandacreatecomponent.component.html',
   styleUrls: ['./comandacreatecomponent.component.css']
 })
@@ -101,5 +103,9 @@ export class ComandaCreateComponent implements OnInit {
         }
       });
     }
+  }
+
+  onCancel(): void {
+    this.router.navigate(['/comandas']);
   }
 }
