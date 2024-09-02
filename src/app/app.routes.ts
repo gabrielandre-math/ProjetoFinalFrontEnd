@@ -10,6 +10,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { ListarclientesComponent } from './components/listarclientes/listarclientes.component';
 import { DashboardComponent } from './analytics/dashboard/dashboard.component';
 import { ComandaListComponent } from './components/comandalist/comandalist.component';
+import { ComandaCreateComponent } from './components/comandacreatecomponent/comandacreatecomponent.component';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,10 @@ export const routes: Routes = [
     {
         path: 'comandas',
         component: ComandaListComponent
+    },
+    {
+        path: 'comandas/create',
+        component: ComandaCreateComponent
     },
     {
         path: '',
