@@ -1,18 +1,19 @@
 canvas {
-    width: 100% !important;
-    height: 350px !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 2 / 1; /* Proporção 2:1, ajusta automaticamente a altura */
 }
 
 .line-chart-shadow {
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .dashboard-title {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 
 .shadow-sm {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
 }
 
 *,
@@ -24,13 +25,13 @@ label, div, td, th {
   font-family: 'Nunito', Arial, sans-serif;
   box-sizing: border-box;
 }
+
 @media (max-width: 768px) {
-    canvas {
-      height: 300px !important;  /* Ajuste a altura dos gráficos para telas menores */
-    }
-  
-    .card {
-      margin-bottom: 20px;  /* Aumenta o espaçamento entre os cards */
-    }
+  canvas {
+    height: auto !important; /* Altura será ajustada automaticamente */
   }
-  
+
+  .card {
+    margin-bottom: 20px;
+  }
+}
