@@ -1,0 +1,115 @@
+/* Estilo base e tipografia */
+*,
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li, blockquote,
+input, textarea, button,
+label, div, td, th {
+  font-family: 'Nunito', Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%; /* Garante que o body ocupe toda a altura da página */
+}
+
+/* Container principal do painel */
+.dashboard-container {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 900px;
+  padding-top: 250px;
+  padding-bottom: 250px;
+  padding-left: 5px;
+  padding-right: 5px;
+  flex: 1; /* Faz com que o container ocupe o espaço restante entre o header e footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+}
+
+/* Título do painel */
+.dashboard-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 70px; /* Reduz a margem inferior do título */
+}
+
+/* Container dos cartões */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Estilo dos cartões */
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Ícone dos cartões */
+.dashboard-card i {
+  font-size: 3rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+/* Texto dos cartões */
+.dashboard-card p {
+  font-size: 1rem;
+  color: #777;
+  margin-top: 10px;
+}
+
+/* Animação ao passar o mouse nos cartões */
+.dashboard-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividade para telas médias */
+@media (max-width: 768px) {
+  .dashboard-card {
+    width: 45%; /* Dois cartões por linha em telas médias */
+  }
+
+  .dashboard-title {
+    margin-top: 50px; /* Ajuste da margem superior do título */
+  }
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 480px) {
+  .dashboard-card {
+    width: 100%; /* Um cartão por linha em telas pequenas */
+  }
+
+  .dashboard-title {
+    margin-top: 20px; /* Ajuste da margem superior do título */
+    font-size: 1.3rem; /* Tamanho menor do título para telas pequenas */
+  }
+}
+
+/* Estilo para garantir que o footer fique no final da página */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o body ocupe a altura total da viewport */
+}
+
+footer {
+  margin-top: auto; /* Empurra o footer para o final da página */
+  text-align: center; /* Centraliza o conteúdo do footer */
+  padding: 10px;
+  background-color: #FF6E7F;
+  color: white;
+}

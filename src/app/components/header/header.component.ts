@@ -110,7 +110,15 @@ export class HeaderComponent implements AfterViewInit {
     });
   }
 
-  goToDashboard() {
-    this.router.navigate(['/dashboard']);
+  goToPainel() {
+    this.router.navigate(['/painel']);
+  }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
 }

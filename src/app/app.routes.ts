@@ -11,6 +11,7 @@ import { ListarclientesComponent } from './components/listarclientes/listarclien
 import { DashboardComponent } from './analytics/dashboard/dashboard.component';
 import { ComandaListComponent } from './components/comandalist/comandalist.component';
 import { ComandaCreateComponent } from './components/comandacreatecomponent/comandacreatecomponent.component';
+import { PainelComponent } from './components/painelcomponent/painelcomponent.component';
 
 export const routes: Routes = [
     {
@@ -23,24 +24,32 @@ export const routes: Routes = [
     },
     { 
         path: 'listarclientes', 
-        component: ListarclientesComponent
+        component: ListarclientesComponent,
+        canActivate: [AuthGuard]
     },
     {
-        path: 'dashboard',  // Nova rota para o Dashboard
-        component: DashboardComponent  // Protegendo a rota com o AuthGuard, se necessário
+        path: 'dashboard',  
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'comandas',
-        component: ComandaListComponent
+        component: ComandaListComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'comandas/create',
-        component: ComandaCreateComponent
+        component: ComandaCreateComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'painel',
+        component: PainelComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: '',
         component: HomeComponent,
-        canActivate: [AuthGuard],
         children: [
             { path: 'home', component: HomeComponent },
             { path: 'header', component: HeaderComponent },

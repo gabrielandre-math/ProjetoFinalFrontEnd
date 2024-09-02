@@ -1,0 +1,32 @@
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<app-header></app-header>
+<div class="dashboard-container">
+  <h2 class="dashboard-title">Painel Administrativo</h2>
+  <div class="card-container">
+    <div class="dashboard-card" (click)="navigateTo('comandas/create')">
+      <i class="bi bi-pencil-square"></i>
+      <p>Adicionar pratos</p>
+    </div>
+    <div class="dashboard-card" (click)="navigateTo('listarclientes')">
+      <i class="bi bi-person"></i>
+      <p>Clientes</p>
+    </div>
+    <div class="dashboard-card" (click)="navigateTo('funcionarios')">
+      <i class="bi bi-person-square"></i>
+      <p>Funcionários</p>
+    </div>
+    <div class="dashboard-card" (click)="navigateTo('dashboard')">
+      <i class="bi bi-bar-chart"></i>
+      <p>Financeiro</p>
+    </div>
+    <div class="dashboard-card" (click)="navigateTo('comandas')">
+      <i class="bi bi-journal"></i>
+      <p>Comandas</p>
+    </div>
+    <div class="dashboard-card" (click)="navigateTo('login')">
+      <i class="bi bi-door-closed"></i>
+      <p>Sair</p>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
