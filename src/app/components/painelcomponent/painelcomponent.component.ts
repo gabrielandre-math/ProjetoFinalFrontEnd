@@ -28,7 +28,10 @@ export class PainelComponent {
     if (route === 'login') {
       this.logout();
     } else {
-      this.router.navigate([route]);
+      this.router.navigate([route]).then(() => {
+        // Recarrega a página após a navegação
+        window.location.reload();
+      });
     }
   }
 
