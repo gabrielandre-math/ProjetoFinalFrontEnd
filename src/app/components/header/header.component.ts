@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import anime from 'animejs/lib/anime.es.js';
 import { Router } from '@angular/router';
@@ -17,11 +17,17 @@ export class HeaderComponent implements AfterViewInit {
   isMenuOpen = false;
   isAuthenticated = false;
 
-  constructor(private authService: AuthService, private router: Router, private toast: ToastrService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toast: ToastrService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngAfterViewInit() {
     this.isAuthenticated = this.authService.isAuthenticated();
-    
+    this.cdr.detectChanges();  // Adiciona isso para resolver o erro
+
     const header = document.querySelector('.header') as HTMLElement;
     const menuButton = document.getElementById('menu-button');
     const animatedIcon = document.querySelector('.animated-icon1');
@@ -98,15 +104,11 @@ export class HeaderComponent implements AfterViewInit {
   logout() {
     this.authService.logout();
     
-    // Redireciona para a página de login
     this.router.navigate(['/login']).then(() => {
-      // Exibe o Toastr após o redirecionamento
       this.toast.info('Você saiu do sistema!', 'Logout');
-      
-      // Espera 2 segundos e recarrega a página para garantir que o usuário veja o Toastr
       setTimeout(() => {
         window.location.reload();
-      }, 2000); // 2000 milissegundos = 2 segundos
+      }, 2000);
     });
   }
 
