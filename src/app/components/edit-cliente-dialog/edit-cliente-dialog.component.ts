@@ -141,10 +141,6 @@ export class EditClienteDialogComponent {
       this.toastr.error('Formulário inválido. Por favor, verifique os campos.');
     }
   }
-  
-  
-  
-  
 
   getPerfilLabel(value: number): string {
     const perfilObj = this.perfis.find(p => p.value === value);
