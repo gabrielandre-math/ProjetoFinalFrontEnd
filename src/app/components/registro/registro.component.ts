@@ -51,15 +51,23 @@ export class RegistroComponent {
   }
 
   validateEmailNotTaken(control: AbstractControl) {
+    if (!control.value) return of(null);
+    
     return this.authService.checkEmailExists(control.value).pipe(
-      map(isTaken => (isTaken ? { emailTaken: true } : null)),
+      map(isTaken => {
+        return isTaken ? { emailTaken: true } : null;
+      }),
       catchError(() => of(null))
     );
   }
 
   validateCpfNotTaken(control: AbstractControl) {
+    if (!control.value) return of(null);
+    
     return this.authService.checkCpfExists(control.value).pipe(
-      map(isTaken => (isTaken ? { cpfTaken: true } : null)),
+      map(isTaken => {
+        return isTaken ? { cpfTaken: true } : null;
+      }),
       catchError(() => of(null))
     );
   }  
@@ -119,57 +127,46 @@ export class RegistroComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-        this.resetFieldStyles();
-        const newUser = {
-            nome: this.registerForm.value.nome,
-            email: this.registerForm.value.email,
-            cpf: this.registerForm.value.cpf,
-            telefone: this.registerForm.value.telefone || '',
-            senha: this.registerForm.value.senha,
-            perfis: [1]
-        };
-    
-        this.authService.register(newUser).subscribe({
-            next: (response) => {
-                this.toastr.success('Registro realizado com sucesso!');
-                setTimeout(() => {
-                    this.router.navigate(['/home']).then(() => {
-                        window.location.reload();
-                    });
-                }, 2000);
-            },
-            error: (error) => {
-                this.toastr.error('Ocorreu um erro ao tentar registrar o usuário.');
-                setTimeout(() => {
-                    window.location.reload();
-                }, 2000);
-            }
-        });
-    } else {
-        this.toastr.error('Formulário inválido. Verifique os campos e tente novamente.');
-    }
-}
+      const newUser = {
+        nome: this.registerForm.value.nome,
+        email: this.registerForm.value.email,
+        cpf: this.registerForm.value.cpf,
+        telefone: this.registerForm.value.telefone || '',
+        senha: this.registerForm.value.senha,
+        perfis: [1]
+      };
 
-resetFieldStyles() {
-    Object.keys(this.registerForm.controls).forEach(field => {
-        const control = this.registerForm.get(field);
-        if (control?.valid) {
-            control.markAsPristine();  // Marca o campo como não modificado
+      this.authService.register(newUser).subscribe({
+        next: (response) => {
+          this.toastr.success('Registro realizado com sucesso!');
+          setTimeout(() => {
+            this.router.navigate(['/home']).then(() => {
+              window.location.reload();
+            });
+          }, 2000);
+        },
+        error: (error) => {
+          this.toastr.error('Ocorreu um erro ao tentar registrar o usuário.');
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         }
-    });
-}
-
-
+      });
+    } else {
+      this.toastr.error('Formulário inválido. Verifique os campos e tente novamente.');
+    }
+  }
 
   formatCpf(event: any) {
     let cpf = event.target.value.replace(/\D/g, '');
-  
+
     if (cpf.length <= 11) {
       cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
       cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
       cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
     }
-  
+
     event.target.value = cpf;
+    this.registerForm.get('cpf')?.setValue(cpf, { emitEvent: false });
   }
 }

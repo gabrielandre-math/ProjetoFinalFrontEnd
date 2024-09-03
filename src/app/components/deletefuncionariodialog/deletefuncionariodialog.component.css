@@ -1,0 +1,56 @@
+*,
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li, blockquote,
+input, textarea, button,
+label, div, td, th {
+  font-family: 'Nunito', Arial, sans-serif;
+  box-sizing: border-box;
+}
+.dialog-container {
+  padding: 20px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.dialog-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #FF6E7F;
+}
+
+.dialog-message {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-cancel {
+  background-color: #f1f1f1;
+  color: #333;
+  border-radius: 20px;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+.btn-cancel:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-confirm {
+  background-color: #ff6e7f;
+  color: white !important;
+  border-radius: 20px;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+.btn-confirm:hover {
+  background-color: #ff4e5f;
+}

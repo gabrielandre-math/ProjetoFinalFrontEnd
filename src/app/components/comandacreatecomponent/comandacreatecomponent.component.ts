@@ -79,7 +79,7 @@ export class ComandaCreateComponent implements OnInit {
   }
 
   carregarFuncionarios(): void {
-    this.funcionarioService.getFuncionarios().subscribe({
+    this.funcionarioService.findAll().subscribe({
       next: (data: Funcionario[]) => {
         this.funcionarios = data;
       },
@@ -89,6 +89,7 @@ export class ComandaCreateComponent implements OnInit {
       }
     });
   }
+  
 
   onSubmit(): void {
     if (this.comandaForm.valid) {

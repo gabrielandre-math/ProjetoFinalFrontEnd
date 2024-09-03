@@ -12,6 +12,7 @@ import { DashboardComponent } from './analytics/dashboard/dashboard.component';
 import { ComandaListComponent } from './components/comandalist/comandalist.component';
 import { ComandaCreateComponent } from './components/comandacreatecomponent/comandacreatecomponent.component';
 import { PainelComponent } from './components/painelcomponent/painelcomponent.component';
+import { ListarfuncionariosComponent } from './components/listarfuncionarios/listarfuncionarios.component';
 
 export const routes: Routes = [
     {
@@ -45,6 +46,11 @@ export const routes: Routes = [
     {
         path: 'painel',
         component: PainelComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'funcionarios',
+        component: ListarfuncionariosComponent,
         canActivate: [AuthGuard]
     },
     {
