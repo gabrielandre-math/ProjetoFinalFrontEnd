@@ -29,8 +29,8 @@ export class PainelComponent {
       this.logout();
     } else {
       this.router.navigate([route]).then(() => {
-        // Recarrega a página após a navegação
-        window.location.reload();
+        // Recarrega a página após a navegação -> Corrigiu um bug imenso k
+        window.location.reload(); 
       });
     }
   }
