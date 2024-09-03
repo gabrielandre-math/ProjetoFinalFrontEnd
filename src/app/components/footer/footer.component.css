@@ -73,4 +73,23 @@ label, div, td, th {
       font-size: 0.9rem;
     }
   }
+  .footer-link {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+    font-family: 'Nunito', sans-serif; /* Aplicar a fonte Nunito */
+    cursor: pointer; /* Adiciona a setinha ao passar o mouse */
+}
   
+.footer-link:hover {
+    text-decoration: underline;
+}
+  
+.footer-text {
+    font-size: 1rem;
+    margin-top: 20px;
+    color: white;
+    font-family: 'Nunito', sans-serif; /* Aplicar a fonte Nunito */
+}

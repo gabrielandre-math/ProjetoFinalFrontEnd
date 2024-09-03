@@ -2,15 +2,15 @@
 
 <footer class="footer">
   <div class="container text-center py-4">
-    <a class="navbar-brand d-flex justify-content-center align-items-center mb-3" href="#">
+    <a class="navbar-brand d-flex justify-content-center align-items-center mb-3" (click)="navigateToHome()">
       <i class="bi bi-exclude custom-icon"></i>
       <span class="brand-name">SmartOrder</span>
     </a>
     <ul class="list-unstyled">
-      <li><a href="#" class="footer-link">Inicio</a></li>
+      <li><a class="footer-link" (click)="navigateToHome()">Inicio</a></li>
       <ng-container *ngIf="!isAuthenticated">
-        <li><a href="#" class="footer-link">Entrar</a></li>
-        <li><a href="#" class="footer-link">Registrar</a></li>
+        <li><a class="footer-link" (click)="navigateToLogin()">Entrar</a></li>
+        <li><a class="footer-link" (click)="navigateToRegister()">Registrar</a></li>
       </ng-container>
     </ul>
     <p class="footer-text">Este é o projeto final da 7ª Academia Java Atos</p>
